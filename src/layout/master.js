@@ -1,32 +1,50 @@
 import React from 'react'
-import { withStyles } from '@material-ui/core/styles'
-import Grid from '@material-ui/core/Grid'
+import {Grid, Row} from 'react-styled-flexboxgrid'
+import {ThemeProvider} from 'styled-components'
 
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
-const styles = theme => ({
-  root: {
-    flexGrow: 1
+// Grid configuration
+const theme = {
+  flexboxgrid: {
+    // Defaults
+    gridSize: 12, // columns
+    gutterWidth: 1, // rem
+    outerMargin: 1, // rem
+    mediaQuery: 'only screen',
+    container: {
+      sm: 46, // rem
+      md: 61, // rem
+      lg: 76 // rem
+    },
+    breakpoints: {
+      xs: 0, // em
+      sm: 48, // em
+      md: 64, // em
+      lg: 75 // em
+    }
   }
-})
+}
 
 const Master = props => ({
   render () {
     return (
-      <Grid container spacing={24}>
-        <Grid item xs={12}>
-          <Header />
+      <ThemeProvider theme={theme}>
+        <Grid fluid>
+          <Row>
+            <Header />
+          </Row>
+          <Row>
+            {this.props.children}
+          </Row>
+          <Row>
+            <Footer />
+          </Row>
         </Grid>
-        <Grid item xs={12}>
-          {this.props.children}
-        </Grid>
-        <Grid item xs={12}>
-          <Footer />
-        </Grid>
-      </Grid>
+      </ThemeProvider>
     )
   }
 })
 
-export default withStyles(styles)(Master)
+export default Master

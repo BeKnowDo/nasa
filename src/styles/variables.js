@@ -2,7 +2,12 @@ const colors = {
   white: '#fff',
   black: '#000',
   grey: '#333',
-  'light-grey': '#999'
+  lightGrey: '#999',
+  transparentGrey: 'rgba(3,3,3,.4)'
 }
 
-export { colors }
+const backgrounds = {
+  header: `background-color: ${colors.transparentGrey}; color: ${colors.white}`
+}
+
+export { colors, backgrounds }
