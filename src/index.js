@@ -15,6 +15,7 @@ injectGlobal`
       font-family: 'Muli', 'Roboto', Helvetica, Arial, sans-serif;
       padding: 0;
       margin: 0;
+      box-sizing: border-box;
     }
     h1, h2, h3, h4, h5, h6 { margin: 0; padding: 0; }
 `
@@ -28,14 +29,11 @@ ReactDOM.render(
             return (
               // Create our stateless component which we'll export
               <Route
+                key={route.unique}
                 path={route.path}
                 component={route.component}
-                route.exact ? 'exact' : ''
-              >
-                <Link to={route.to}>
-                  {route.name}
-                </Link>
-              </Route>
+                exact={!!route.exact}
+              />
             )
           })
         }

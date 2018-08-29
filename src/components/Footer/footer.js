@@ -4,7 +4,7 @@ import { FooterSc } from './styles'
 const Footer = () => {
   return (
     <FooterSc>
-      This is our Footer component
+      BKD Digital, Inc. - Veteran owned and Operated
     </FooterSc>
   )
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Grid, Row} from 'react-styled-flexboxgrid'
+import { Grid, Row, Col } from 'react-styled-flexboxgrid'
 import {ThemeProvider} from 'styled-components'
 
 import Header from '../components/Header'
@@ -10,8 +10,8 @@ const theme = {
   flexboxgrid: {
     // Defaults
     gridSize: 12, // columns
-    gutterWidth: 1, // rem
-    outerMargin: 1, // rem
+    gutterWidth: 0, // rem
+    outerMargin: 0, // rem
     mediaQuery: 'only screen',
     container: {
       sm: 46, // rem
@@ -33,13 +33,19 @@ const Master = props => ({
       <ThemeProvider theme={theme}>
         <Grid fluid>
           <Row>
-            <Header />
+            <Col xs={12}>
+              <Header />
+            </Col>
           </Row>
           <Row>
-            {this.props.children}
+            <Col xs={12}>
+              {this.props.children}
+            </Col>
           </Row>
           <Row>
-            <Footer />
+            <Col xs={12}>
+              <Footer />
+            </Col>
           </Row>
         </Grid>
       </ThemeProvider>

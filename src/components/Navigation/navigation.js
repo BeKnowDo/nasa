@@ -11,7 +11,7 @@ const Navigation = () => {
       <ul>
         {routeNames.map(route => {
           return (
-            <li>
+            <li key={route.unique}>
               <a href={route.to} title={route.name}>
                 {route.name}
               </a>
