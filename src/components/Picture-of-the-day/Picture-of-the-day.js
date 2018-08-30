@@ -1,17 +1,17 @@
-import React, { Component } from 'react'
-import moment from 'moment'
-import styled from 'styled-components'
-import axios from 'axios'
+import React, { Component } from "react";
+import moment from "moment";
+import styled from "styled-components";
+import axios from "axios";
 
-import { colors, typography, backgrounds } from '../../styles/variables'
-import Img from '../Image'
+import { colors, typography, backgrounds } from "../../styles/variables";
+import Img from "../Image";
 
 const statusContants = {
-  PENDING: 'PENDING',
-  LOADING: 'LOADING',
-  LOADED: 'LOADED',
-  FAILED: 'FAILED'
-}
+  PENDING: "PENDING",
+  LOADING: "LOADING",
+  LOADED: "LOADED",
+  FAILED: "FAILED"
+};
 
 const PictureOfTheDaySc = styled.div`
   position: relative;
@@ -25,6 +25,7 @@ const PictureOfTheDaySc = styled.div`
     padding: 0 40px 20px;
     position: absolute;
     bottom: 4%;
+    text-shadow: 0 2px 4px rgba(3, 3, 3, 1);
 
     &::first-letter {
       font-size: 50px;
@@ -32,27 +33,41 @@ const PictureOfTheDaySc = styled.div`
       color: ${colors.red};
     }
   }
-`
+`;
 
 const DescriptionSc = styled.p`
   padding: 10px;
   color: ${colors.black};
   line-height: 140%;
-`
+`;
 
 const ImageWrapperSc = styled.div`
   position: relative;
-`
+`;
 
 const ButtonSc = styled.span`
   @keyframes pulse {
-    0% { transform: scale(1); }
-    25% { transform: scale(.8);  }
-    50% { transform: scale(1);  }
-    100% { transform: scale(.8);  }
-    50% { transform: scale(1);  }
-    25% { transform: scale(.8);  }
-    100% { transform: scale(1); }
+    0% {
+      transform: scale(1);
+    }
+    25% {
+      transform: scale(0.8);
+    }
+    50% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0.8);
+    }
+    50% {
+      transform: scale(1);
+    }
+    25% {
+      transform: scale(0.8);
+    }
+    100% {
+      transform: scale(1);
+    }
   }
 
   &:not(:focus) {
@@ -70,7 +85,7 @@ const ButtonSc = styled.span`
   font-size: 12px;
   background-color: ${colors.black};
   color: ${colors.white};
-  transition: color .2s ease-in-out, background-color .2s ease-in-out;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
   border-radius: 4px;
   border: 1px solid ${colors.black};
   overflow: hidden;
@@ -87,13 +102,14 @@ const ButtonSc = styled.span`
       position: absolute;
       top: 0;
       right: 0;
-      transition: color .2s, background-color .2s, right .2s;
-      background-color: ${props => props.hd ? `${colors.green}` : `${colors.red}`};
+      transition: color 0.2s, background-color 0.2s, right 0.2s;
+      background-color: ${props =>
+        props.hd ? `${colors.green}` : `${colors.red}`};
       width: 50%;
       height: 100%;
     }
   }
-`
+`;
 
 const LoaderSc = styled.div`
   position: absolute;
@@ -116,9 +132,8 @@ const LoaderSc = styled.div`
     }
   }
 
-
   &:before {
-    content: '';
+    content: "";
     display: block;
     z-index: 1;
     position: relative;
@@ -137,7 +152,7 @@ const LoaderSc = styled.div`
   }
 
   &:after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -145,80 +160,81 @@ const LoaderSc = styled.div`
     height: 100%;
     ${backgrounds.blackOpacity};
   }
-`
+`;
 
 class PictureOfTheDay extends Component {
-  constructor (props) {
-    super(props)
+  constructor(props) {
+    super(props);
 
     this.state = {
       hd: false,
       loading: statusContants.LOADED,
       showDescription: false
-    }
+    };
   }
 
   hdControl = () => {
     return (
-      <ButtonSc role='button' tabIndex='0' aria-pressed='false' onClick={this.hdHandleToggle} hd={this.state.hd}>
+      <ButtonSc
+        role="button"
+        tabIndex="0"
+        aria-pressed="false"
+        onClick={this.hdHandleToggle}
+        hd={this.state.hd}
+      >
         <span>HD</span>
       </ButtonSc>
-    )
-  }
+    );
+  };
 
   hdHandleToggle = () => {
-    const hdUrl = this.props.hdurl
+    const hdUrl = this.props.hdurl;
 
-    this.setState({ loading: statusContants.PENDING })
+    this.setState({ loading: statusContants.PENDING });
 
-    this.img = new Image()
-    this.img.onload = this.handleLoad
-    this.img.onerror = this.handleError
-    this.img.src = hdUrl
-  }
+    this.img = new Image();
+    this.img.onload = this.handleLoad;
+    this.img.onerror = this.handleError;
+    this.img.src = hdUrl;
+  };
 
   handleLoad = () => {
-    const hdState = this.state.hd
+    const hdState = this.state.hd;
 
     this.setState({
       loading: statusContants.LOADED,
       hd: !hdState
-    })
+    });
+  };
+
+  handleError() {
+    this.setState({ loading: statusContants.LOADED });
   }
 
-  handleError () {
-    this.setState({ loading: statusContants.LOADED })
-  }
+  descriptionToggle = () => {};
 
-  descriptionToggle = () => {
-
-  }
-
-  render (props) {
-    const date = moment(this.props.date)
-    const day = date.format('dddd')
-    const month = date.month()
-    const year = date.year()
+  render(props) {
+    const date = moment(this.props.date);
+    const day = date.format("dddd");
+    const month = date.month();
+    const year = date.year();
 
     return (
       <PictureOfTheDaySc>
         <ImageWrapperSc>
           <h2>Picture of the Day for {`${day} ${month}, ${year}`}</h2>
           <Img src={this.state.hd ? this.props.hdurl : this.props.url} />
-          {
-            this.state.loading === statusContants.PENDING ? <LoaderSc /> : undefined
-          }
+          {this.state.loading === statusContants.PENDING ? (
+            <LoaderSc />
+          ) : (
+            undefined
+          )}
 
           {this.hdControl()}
-
         </ImageWrapperSc>
-
-
       </PictureOfTheDaySc>
-    )
+    );
   }
-
-
 }
 
-export default PictureOfTheDay
+export default PictureOfTheDay;
