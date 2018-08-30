@@ -15,7 +15,8 @@ const backgrounds = {
   header: `background-color: ${colors.transparentGrey}; color: ${colors.white};`,
   navigation: {
     items: `background-color: ${colors.transparentDarkGrey}; color: ${colors.white};`
-  }
+  },
+  blackOpacity: `background-color: ${colors.transparentDarkGrey};`
 }
 
 const typography = {

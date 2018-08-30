@@ -1,9 +1,17 @@
 import React, { Component } from 'react'
 import moment from 'moment'
 import styled from 'styled-components'
+import axios from 'axios'
 
-import { colors, typography } from '../../styles/variables'
+import { colors, typography, backgrounds } from '../../styles/variables'
 import Img from '../Image'
+
+const statusContants = {
+  PENDING: 'PENDING',
+  LOADING: 'LOADING',
+  LOADED: 'LOADED',
+  FAILED: 'FAILED'
+}
 
 const PictureOfTheDaySc = styled.div`
   position: relative;
@@ -62,10 +70,10 @@ const ButtonSc = styled.span`
   font-size: 12px;
   background-color: ${colors.black};
   color: ${colors.white};
+  transition: color .2s ease-in-out, background-color .2s ease-in-out;
   border-radius: 4px;
   border: 1px solid ${colors.black};
   overflow: hidden;
-
 
   span {
     position: relative;
@@ -79,25 +87,111 @@ const ButtonSc = styled.span`
       position: absolute;
       top: 0;
       right: 0;
-      transition: right .2s ease-in-out;
-      background-color ${colors.red};
+      transition: color .2s, background-color .2s, right .2s;
+      background-color: ${props => props.hd ? `${colors.green}` : `${colors.red}`};
       width: 50%;
       height: 100%;
     }
   }
 `
 
-const hdToggle = props => {
-  return (
-    <ButtonSc role='button' tabIndex='0' aria-pressed='false'>
-      <span>HD</span>
-    </ButtonSc>
-  )
-}
+const LoaderSc = styled.div`
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  @keyframes lds-hourglass {
+    0% {
+      transform: rotate(0);
+      animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+    50% {
+      transform: rotate(900deg);
+      animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+    100% {
+      transform: rotate(1800deg);
+    }
+  }
+
+
+  &:before {
+    content: '';
+    display: block;
+    z-index: 1;
+    position: relative;
+    left: 0;
+    top: 50%;
+
+    border-radius: 50%;
+    width: 0;
+    height: 0;
+    margin: 0 auto;
+
+    box-sizing: border-box;
+    border: 26px solid ${colors.black};
+    border-color: ${colors.black} transparent #fff transparent;
+    animation: lds-hourglass 1.2s infinite;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    ${backgrounds.blackOpacity};
+  }
+`
 
 class PictureOfTheDay extends Component {
   constructor (props) {
     super(props)
+
+    this.state = {
+      hd: false,
+      loading: statusContants.LOADED,
+      showDescription: false
+    }
+  }
+
+  hdControl = () => {
+    return (
+      <ButtonSc role='button' tabIndex='0' aria-pressed='false' onClick={this.hdHandleToggle} hd={this.state.hd}>
+        <span>HD</span>
+      </ButtonSc>
+    )
+  }
+
+  hdHandleToggle = () => {
+    const hdUrl = this.props.hdurl
+
+    this.setState({ loading: statusContants.PENDING })
+
+    this.img = new Image()
+    this.img.onload = this.handleLoad
+    this.img.onerror = this.handleError
+    this.img.src = hdUrl
+  }
+
+  handleLoad = () => {
+    const hdState = this.state.hd
+
+    this.setState({
+      loading: statusContants.LOADED,
+      hd: !hdState
+    })
+  }
+
+  handleError () {
+    this.setState({ loading: statusContants.LOADED })
+  }
+
+  descriptionToggle = () => {
+
   }
 
   render (props) {
@@ -110,14 +204,21 @@ class PictureOfTheDay extends Component {
       <PictureOfTheDaySc>
         <ImageWrapperSc>
           <h2>Picture of the Day for {`${day} ${month}, ${year}`}</h2>
-          <Img src={this.props.url} />
-          {hdToggle()}
+          <Img src={this.state.hd ? this.props.hdurl : this.props.url} />
+          {
+            this.state.loading === statusContants.PENDING ? <LoaderSc /> : undefined
+          }
+
+          {this.hdControl()}
+
         </ImageWrapperSc>
 
-        <DescriptionSc>{this.props.explanation}</DescriptionSc>
+
       </PictureOfTheDaySc>
     )
   }
+
+
 }
 
 export default PictureOfTheDay
