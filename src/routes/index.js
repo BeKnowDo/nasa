@@ -10,7 +10,7 @@ const routeNames = [{
 },
 {
   unique: 'SEARCH',
-  name: 'Search NASA Images',
+  name: 'NASA Image Search',
   to: '/search',
   exact: true
 }

@@ -14,7 +14,8 @@ const NavigationSc = styled.nav`
   }
 
   li {
-    padding: 20px 10px;
+    padding: 10px;
+    font-size: 14px;
     transition: background-color .2s ease-in-out;
     text-align: center;
     position: relative;
