@@ -25,6 +25,10 @@ const PictureOfTheDaySc = styled.div`
   @media ${device.tablet} {
     h2 {
       font-size: 42px;
+
+      &::first-letter {
+        font-size: 50px;
+      }
     }
   }
 
@@ -176,11 +180,9 @@ const LoaderSc = styled.div`
 `
 
 const DownloadLinkSc = styled.a`
-  position: absolute;
-  right: 10px;
-  bottom: 24px;
   color: ${colors.white};
-  font-size: 22px;
+  font-size: 28px;
+  padding: 0 0 0 12px;
 `
 const MagifyWrapper = styled.div`
 

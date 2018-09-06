@@ -99,8 +99,19 @@ class PictureOfTheDay extends Component {
     return (
       <PictureOfTheDaySc>
         <ImageWrapperSc>
-          <h2>Picture of the Day for {`${day} ${month}, ${year}`}</h2>
-          <Img src={imgUrl} onLoad={this.ImageLoaded} />
+          <h2>
+          Picture of the Day for {`${day} ${month}, ${year}`}
+            <DownloadLinkSc href={imgUrl} target='_blank' title="Download NASA's Image of the Day" download>
+              <DownloadIcon />
+            </DownloadLinkSc>
+          </h2>
+
+          <ContentZoom zoomPercent={200}
+            largeImageUrl={this.props.hdurl}
+            imageUrl={this.props.url}
+            contentHeight={300}
+            contentWidth={500} />
+
           {this.state.loading === statusContants.PENDING ? (
             <LoaderSc />
           ) : (
@@ -108,9 +119,7 @@ class PictureOfTheDay extends Component {
           )}
 
           {this.hdControl()}
-          <DownloadLinkSc href={imgUrl} target='_blank' download>
-            <DownloadIcon />
-          </DownloadLinkSc>
+
         </ImageWrapperSc>
 
       </PictureOfTheDaySc>
