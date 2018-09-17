@@ -6,12 +6,6 @@ const ContentZoomSc = styled(ContentZoom)`
   .zoomed-image {
     background-size: cover;
     cursor: pointer;
-
-    @media ${device.tablet} {
-      background-size: cover;
-      background-repeat: no-repeat;
-      height: 900px !important;
-    }
   }
 `
 

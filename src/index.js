@@ -28,7 +28,8 @@ injectGlobal`
     @media ${device.tablet} {
       background-size: cover;
       background-repeat: no-repeat;
-      height: 900px !important;
+      /* background-position: center center !important; */
+      height: 400px !important;
     }
   }
 `
