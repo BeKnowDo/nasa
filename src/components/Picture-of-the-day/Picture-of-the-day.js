@@ -1,19 +1,16 @@
 import React, { Component } from 'react'
 import moment from 'moment'
 import { FiDownloadCloud as DownloadIcon } from 'react-icons/fi'
-import ContentZoom from 'react-content-zoom'
+// import ContentZoom from 'react-content-zoom'
 
 import {
   PictureOfTheDaySc,
-  DescriptionSc,
   ImageWrapperSc,
   ToggleButton,
   LoaderSc,
   DownloadLinkSc,
-  MagifyWrapper
+  ContentZoomSc
 } from './styles'
-
-import Img from '../Image'
 
 const statusContants = {
   PENDING: 'PENDING',
@@ -100,17 +97,17 @@ class PictureOfTheDay extends Component {
       <PictureOfTheDaySc>
         <ImageWrapperSc>
           <h2>
-          Picture of the Day for {`${day} ${month}, ${year}`}
+          Picture of the Day: {`${day} ${month}, ${year}`}
             <DownloadLinkSc href={imgUrl} target='_blank' title="Download NASA's Image of the Day" download>
               <DownloadIcon />
             </DownloadLinkSc>
           </h2>
 
-          <ContentZoom zoomPercent={200}
+          <ContentZoomSc
+            zoomPercent={200}
             largeImageUrl={this.props.hdurl}
             imageUrl={this.props.url}
-            contentHeight={300}
-            contentWidth={500} />
+            contentHeight={300} />
 
           {this.state.loading === statusContants.PENDING ? (
             <LoaderSc />

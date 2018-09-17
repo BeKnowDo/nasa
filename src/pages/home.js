@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react'
 import axios from 'axios'
 import PictureOfTheDay from '../components/Picture-of-the-day'
+import MovieWall from '../components/MovieWall'
 
-import { endpoints } from '../endpoints'
+import { endpoints } from '../config/endpoints'
 
 class Home extends Component {
   constructor (props) {
@@ -29,6 +30,7 @@ class Home extends Component {
     return (
       <Fragment>
         { potd !== null ? <PictureOfTheDay {...potd} /> : undefined }
+        <MovieWall />
       </Fragment>
     )
   }

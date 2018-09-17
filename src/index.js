@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { injectGlobal } from 'styled-components'
+import { device } from './styles/variables'
 
 // import routes
 import {
@@ -23,6 +24,12 @@ injectGlobal`
   .zoomed-image {
     background-size: cover;
     cursor: pointer;
+
+    @media ${device.tablet} {
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 900px !important;
+    }
   }
 `
 

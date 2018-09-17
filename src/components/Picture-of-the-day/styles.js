@@ -1,5 +1,19 @@
 import styled from 'styled-components'
 import { colors, typography, backgrounds, device } from '../../styles/variables'
+import ContentZoom from 'react-content-zoom'
+
+const ContentZoomSc = styled(ContentZoom)`
+  .zoomed-image {
+    background-size: cover;
+    cursor: pointer;
+
+    @media ${device.tablet} {
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 900px !important;
+    }
+  }
+`
 
 const PictureOfTheDaySc = styled.div`
   position: relative;
@@ -8,12 +22,12 @@ const PictureOfTheDaySc = styled.div`
   h2 {
     ${typography.alegreya};
     font-weight: 700;
-    font-size: 20px;
+    font-size: 26px;
     color: ${colors.white};
     padding: 0 20px;
     position: absolute;
     bottom: 24px;
-    text-shadow: 0 2px 4px rgba(3, 3, 3, 1);
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 1);
 
     &::first-letter {
       font-size: 30px;
@@ -124,8 +138,6 @@ const ToggleButton = styled.span`
   @media ${device.tablet} {
 
   }
-
-
 `
 
 const LoaderSc = styled.div`
@@ -197,5 +209,6 @@ export {
   ToggleButton,
   LoaderSc,
   DownloadLinkSc,
-  MagifyWrapper
+  MagifyWrapper,
+  ContentZoomSc
 }
