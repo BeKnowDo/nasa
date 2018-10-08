@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import moment from 'moment'
 import { FiDownloadCloud as DownloadIcon } from 'react-icons/fi'
-// import ContentZoom from 'react-content-zoom'
 
 import {
   PictureOfTheDaySc,
