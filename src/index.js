@@ -11,6 +11,10 @@ import {
 
 import Master from './layout/master'
 
+// Redux store management
+import { Provider } from 'react-redux'
+import store from './store'
+
 injectGlobal`
     body {
       font-family: 'Muli', 'Roboto', Helvetica, Arial, sans-serif;
@@ -35,24 +39,27 @@ injectGlobal`
 `
 
 ReactDOM.render(
-  <Master>
-    <Router>
-      <Switch>
-        {
-          routeNames.map((route) => {
-            return (
+  <Provider store={store}>
+    <Master>
+      <Router>
+        <Switch>
+          {
+            routeNames.map((route) => {
+              return (
               // Create our stateless component which we'll export
-              <Route
-                key={route.unique}
-                path={route.path}
-                component={route.component}
-                exact={!!route.exact}
-              />
-            )
-          })
-        }
-      </Switch>
-    </Router>
-  </Master>,
+                <Route
+                  key={route.unique}
+                  path={route.path}
+                  component={route.component}
+                  exact={!!route.exact}
+                />
+              )
+            })
+          }
+        </Switch>
+      </Router>
+    </Master>
+  </Provider>
+  ,
   document.getElementById('root')
 )

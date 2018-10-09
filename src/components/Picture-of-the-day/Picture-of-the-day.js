@@ -1,12 +1,13 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import moment from 'moment'
 import { FiDownloadCloud as DownloadIcon } from 'react-icons/fi'
+import { connect } from 'react-redux'
 
 import {
   PictureOfTheDaySc,
   ImageWrapperSc,
   ToggleButton,
-  LoaderSc,
+  // LoaderSc,
   DownloadLinkSc,
   ContentZoomSc
 } from './styles'
@@ -18,21 +19,7 @@ const statusContants = {
   FAILED: 'FAILED'
 }
 
-class PictureOfTheDay extends Component {
-  constructor (props) {
-    super(props)
-
-    this.state = {
-      hd: false,
-      loading: statusContants.LOADED,
-      showDescription: false,
-      dimensions: {
-        height: null,
-        width: null
-      }
-    }
-  }
-
+class PictureOfTheDay extends PureComponent {
   hdControl = () => {
     return (
       <ToggleButton
@@ -90,7 +77,7 @@ class PictureOfTheDay extends Component {
     const day = date.format('dddd')
     const month = date.month()
     const year = date.year()
-    const imgUrl = this.state.hd ? this.props.hdurl : this.props.url
+    const imgUrl = this.props.url || undefined
 
     return (
       <PictureOfTheDaySc>
@@ -108,13 +95,9 @@ class PictureOfTheDay extends Component {
             imageUrl={this.props.url}
             contentHeight={300} />
 
-          {this.state.loading === statusContants.PENDING ? (
-            <LoaderSc />
-          ) : (
-            undefined
-          )}
+          {/* <LoaderSc /> */}
 
-          {this.hdControl()}
+          {/* {this.hdControl()} */}
 
         </ImageWrapperSc>
 
@@ -123,4 +106,4 @@ class PictureOfTheDay extends Component {
   }
 }
 
-export default PictureOfTheDay
+export default connect()(PictureOfTheDay)

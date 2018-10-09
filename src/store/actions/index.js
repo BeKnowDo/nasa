@@ -1,5 +1,4 @@
-const GET_PIC_OF_DAY = 'picture-of-the-day'
-const GET_MOVIES = 'get-movies'
+import { GET_PIC_OF_DAY, GET_MOVIES } from '../constants'
 
 const getPicOfDay = (url) => ({
   type: GET_PIC_OF_DAY,

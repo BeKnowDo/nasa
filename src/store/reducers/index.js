@@ -1,7 +1,10 @@
-const initialState = {
-  movies: []
-}
+import { combineReducers } from 'redux'
+import movies from './movies'
+import picture from './picture-of-the-day'
 
-const movies = (state = initialState) => {
+const rootReducer = combineReducers({
+  movies,
+  picture
+})
 
-}
+export default rootReducer

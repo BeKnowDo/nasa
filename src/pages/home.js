@@ -1,24 +1,17 @@
 import React, { Component, Fragment } from 'react'
 import axios from 'axios'
+import { connect } from 'react-redux'
+
 import PictureOfTheDay from '../components/Picture-of-the-day'
 import MovieWall from '../components/MovieWall'
 
 import { endpoints } from '../config/endpoints'
 
 class Home extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      potd: null
-    }
-  }
-
   componentDidMount () {
     axios.get(endpoints.NASA.POTD)
       .then(response => {
-        this.setState({
-          potd: response.data
-        })
+        console.log(response)
       })
       .catch(error => {
         console.log(error)
@@ -26,14 +19,20 @@ class Home extends Component {
   }
 
   render () {
-    const { potd } = this.state
     return (
       <Fragment>
-        { potd !== null ? <PictureOfTheDay {...potd} /> : undefined }
+        <PictureOfTheDay />
         <MovieWall />
       </Fragment>
     )
   }
 }
 
-export default Home
+const mapStatetoProps = (state) => {
+  return {
+    movies: state.movies.list,
+    picture: state.picture.url
+  }
+}
+
+export default connect(mapStatetoProps)(Home)
