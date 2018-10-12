@@ -63,7 +63,7 @@ const ImageWrapperSc = styled.div`
     background-image: url(${props.background});
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: bottom right;
     img {
       visibility: hidden;
     }

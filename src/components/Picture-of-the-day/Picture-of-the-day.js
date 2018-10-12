@@ -7,9 +7,7 @@ import {
   PictureOfTheDaySc,
   ImageWrapperSc,
   ToggleButton,
-  // LoaderSc,
   DownloadLinkSc,
-  ContentZoomSc,
   CircleLoaderSc
 } from './styles'
 
@@ -21,6 +19,13 @@ const statusContants = {
 }
 
 class PictureOfTheDay extends PureComponent {
+  constructor (props) {
+    super(props)
+    this.state = {
+      hdEnabled: false,
+      url: ''
+    }
+  }
   componentDidMount () {
     this.props.fetchPicture()
   }
@@ -32,7 +37,7 @@ class PictureOfTheDay extends PureComponent {
         tabIndex='0'
         aria-pressed='false'
         onClick={this.hdHandleToggle}
-        hd={this.props.picture.hdurl}
+        hd={this.state.hdEnabled}
       >
         <span>HD</span>
       </ToggleButton>
@@ -40,7 +45,9 @@ class PictureOfTheDay extends PureComponent {
   }
 
   hdHandleToggle = () => {
-    const hdurl = this.props.picture.hdurl
+    this.setState({
+      hdEnabled: !this.state.hdEnabled
+    })
   }
 
   handleError () {
@@ -69,16 +76,18 @@ class PictureOfTheDay extends PureComponent {
     const imgUrl = this.props.picture.url
     const hdurl = this.props.picture.hdurl
 
+    const currentImageUrl = this.state.hdEnabled ? hdurl : imgUrl
+
     return (
-      <ImageWrapperSc>
+      <ImageWrapperSc background={currentImageUrl}>
         <h2>
           Picture of the Day: {`${day} ${month}, ${year}`}
-          <DownloadLinkSc href={imgUrl} target='_blank' title="Download NASA's Image of the Day" download>
+          <DownloadLinkSc href={currentImageUrl} target='_blank' title="Download NASA's Image of the Day" download>
             <DownloadIcon />
           </DownloadLinkSc>
         </h2>
 
-        <img src={imgUrl} />
+        <img src={currentImageUrl} />
 
         {this.hdControl()}
 
