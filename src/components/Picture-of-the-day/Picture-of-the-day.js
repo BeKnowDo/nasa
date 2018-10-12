@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import moment from 'moment'
 import { FiDownloadCloud as DownloadIcon } from 'react-icons/fi'
-import { connect } from 'react-redux'
+import { CircleLoader } from 'react-spinners'
 
 import {
   PictureOfTheDaySc,
@@ -9,7 +9,8 @@ import {
   ToggleButton,
   // LoaderSc,
   DownloadLinkSc,
-  ContentZoomSc
+  ContentZoomSc,
+  CircleLoaderSc
 } from './styles'
 
 const statusContants = {
@@ -20,6 +21,10 @@ const statusContants = {
 }
 
 class PictureOfTheDay extends PureComponent {
+  componentDidMount () {
+    this.props.fetchPicture()
+  }
+
   hdControl = () => {
     return (
       <ToggleButton
@@ -27,32 +32,16 @@ class PictureOfTheDay extends PureComponent {
         tabIndex='0'
         aria-pressed='false'
         onClick={this.hdHandleToggle}
-        hd={this.state.hd}
+        hd={this.props.picture.hdurl}
       >
         <span>HD</span>
       </ToggleButton>
     )
-  };
+  }
 
   hdHandleToggle = () => {
-    const hdUrl = this.props.hdurl
-
-    this.setState({ loading: statusContants.PENDING })
-
-    this.img = new Image()
-    this.img.onload = this.handleLoad
-    this.img.onerror = this.handleError
-    this.img.src = hdUrl
-  };
-
-  handleLoad = () => {
-    const hdState = this.state.hd
-
-    this.setState({
-      loading: statusContants.LOADED,
-      hd: !hdState
-    })
-  };
+    const hdurl = this.props.picture.hdurl
+  }
 
   handleError () {
     this.setState({ loading: statusContants.LOADED })
@@ -68,42 +57,51 @@ class PictureOfTheDay extends PureComponent {
         width
       }
     })
-  };
+  }
 
   descriptionToggle = () => {};
 
-  render (props) {
-    const date = moment(this.props.date)
+  imageContainer = () => {
+    const date = moment(this.props.picture.date)
     const day = date.format('dddd')
     const month = date.month()
     const year = date.year()
-    const imgUrl = this.props.url || undefined
+    const imgUrl = this.props.picture.url
+    const hdurl = this.props.picture.hdurl
 
     return (
-      <PictureOfTheDaySc>
-        <ImageWrapperSc>
-          <h2>
+      <ImageWrapperSc>
+        <h2>
           Picture of the Day: {`${day} ${month}, ${year}`}
-            <DownloadLinkSc href={imgUrl} target='_blank' title="Download NASA's Image of the Day" download>
-              <DownloadIcon />
-            </DownloadLinkSc>
-          </h2>
+          <DownloadLinkSc href={imgUrl} target='_blank' title="Download NASA's Image of the Day" download>
+            <DownloadIcon />
+          </DownloadLinkSc>
+        </h2>
 
-          <ContentZoomSc
-            zoomPercent={200}
-            largeImageUrl={this.props.hdurl}
-            imageUrl={this.props.url}
-            contentHeight={300} />
+        <img src={imgUrl} />
 
-          {/* <LoaderSc /> */}
+        {this.hdControl()}
 
-          {/* {this.hdControl()} */}
+      </ImageWrapperSc>
+    )
+  }
 
-        </ImageWrapperSc>
-
+  render (props) {
+    return (
+      <PictureOfTheDaySc>
+        { this.props.picture.isFetching ? (
+          <CircleLoaderSc>
+            <CircleLoader
+              sizeUnit={'px'}
+              size={150}
+              color={'rgb(54, 215, 183)'}
+              loading
+            />
+          </CircleLoaderSc>
+        ) : this.imageContainer() }
       </PictureOfTheDaySc>
     )
   }
 }
 
-export default connect()(PictureOfTheDay)
+export default PictureOfTheDay

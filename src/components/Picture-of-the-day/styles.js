@@ -9,6 +9,14 @@ const ContentZoomSc = styled(ContentZoom)`
   }
 `
 
+const CircleLoaderSc = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  background-color: rgba(3,3,3,.8);
+`
+
 const PictureOfTheDaySc = styled.div`
   position: relative;
   z-index: auto;
@@ -51,7 +59,7 @@ const DescriptionSc = styled.p`
 const ImageWrapperSc = styled.div`
   position: relative;
   ${props => props.background ? `
-    height: 100vh;
+    height: 80vh;
     background-image: url(${props.background});
     background-size: cover;
     background-repeat: no-repeat;
@@ -59,7 +67,11 @@ const ImageWrapperSc = styled.div`
     img {
       visibility: hidden;
     }
-  ` : ``};
+  ` : `
+    img {
+      display: block;
+    }
+  `};
 `
 
 const ToggleButton = styled.span`
@@ -204,5 +216,6 @@ export {
   LoaderSc,
   DownloadLinkSc,
   MagifyWrapper,
-  ContentZoomSc
+  ContentZoomSc,
+  CircleLoaderSc
 }

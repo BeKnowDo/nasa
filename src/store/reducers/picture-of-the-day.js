@@ -1,17 +1,45 @@
-import { GET_PIC_OF_DAY } from '../constants'
+import { FETCHING_PIC, FETCHING_PIC_ERROR, FETCHING_PIC_SUCCESS } from '../constants'
 
 const pictureState = {
-  url: ''
+  isFetching: false,
+  errorMessage: '',
+  copyright: '',
+  date: '',
+  hdurl: '',
+  url: '',
+  title: '',
+  description: ''
 }
 
-export default function (state = pictureState, action) {
+const pictureOfTheDayReducer = (state = pictureState, action) => {
   switch (action.type) {
-    case GET_PIC_OF_DAY:
+    case FETCHING_PIC:
       return {
         ...state,
-        url: action.url
+        isFetching: true
       }
+
+    case FETCHING_PIC_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        url: action.payload.url,
+        hdurl: action.payload.hdurl,
+        copyright: action.payload.copyright,
+        date: action.payload.date,
+        title: action.payload.title,
+        description: action.payload.description
+      }
+
+    case FETCHING_PIC_ERROR:
+      return {
+        ...state,
+        errorMessage: action.payload
+      }
+
     default:
       return state
   }
 }
+
+export default pictureOfTheDayReducer

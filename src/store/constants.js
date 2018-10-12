@@ -1,7 +1,11 @@
-const GET_PIC_OF_DAY = 'picture-of-the-day'
 const GET_MOVIES = 'get-movies'
+const FETCHING_PIC = 'fetching-pic'
+const FETCHING_PIC_ERROR = 'fetching-pic-error'
+const FETCHING_PIC_SUCCESS = 'fetching-pic-success'
 
 export {
-  GET_PIC_OF_DAY,
-  GET_MOVIES
+  GET_MOVIES,
+  FETCHING_PIC,
+  FETCHING_PIC_ERROR,
+  FETCHING_PIC_SUCCESS
 }

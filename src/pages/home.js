@@ -1,27 +1,17 @@
 import React, { Component, Fragment } from 'react'
-import axios from 'axios'
 import { connect } from 'react-redux'
 
 import PictureOfTheDay from '../components/Picture-of-the-day'
 import MovieWall from '../components/MovieWall'
 
-import { endpoints } from '../config/endpoints'
+// import actions
+import { fetchPicture } from '../store/actions'
 
 class Home extends Component {
-  componentDidMount () {
-    axios.get(endpoints.NASA.POTD)
-      .then(response => {
-        console.log(response)
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }
-
   render () {
     return (
       <Fragment>
-        <PictureOfTheDay />
+        <PictureOfTheDay {...this.props} />
         <MovieWall />
       </Fragment>
     )
@@ -29,10 +19,19 @@ class Home extends Component {
 }
 
 const mapStatetoProps = (state) => {
+  const picture = state.picture
+
   return {
-    movies: state.movies.list,
-    picture: state.picture.url
+    picture: {
+      isFetching: picture.isFetching,
+      url: picture.url,
+      description: picture.description,
+      title: picture.title,
+      copyright: picture.copyright,
+      hdurl: picture.hdurl,
+      date: picture.date
+    }
   }
 }
 
-export default connect(mapStatetoProps)(Home)
+export default connect(mapStatetoProps, { fetchPicture })(Home)
