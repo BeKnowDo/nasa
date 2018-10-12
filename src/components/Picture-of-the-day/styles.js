@@ -59,11 +59,12 @@ const DescriptionSc = styled.p`
 const ImageWrapperSc = styled.div`
   position: relative;
   ${props => props.background ? `
-    height: 80vh;
+    height: 60vh;
     background-image: url(${props.background});
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom right;
+    background-color: ${colors.black};
     img {
       visibility: hidden;
     }

@@ -7,21 +7,20 @@ const MovieWallSc = styled.section`
   ul {
     margin: 0;
     padding: 0;
+    list-style-type: none;
     display: flex;
-    flex-wrap: nowrap;
     overflow-x: auto;
-    align-items: center;
     -webkit-overflow-scrolling: touch;
+
     &::-webkit-scrollbar {
       display: none;
     }
     li {
       flex: 0 0 auto;
-      justify-content: center;
-      align-items: center;
-      width: 170px;
+      width: 23%;
       padding: 0;
       margin: 0;
+
     }
   }
 

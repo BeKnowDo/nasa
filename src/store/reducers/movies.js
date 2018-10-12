@@ -1,7 +1,9 @@
 import { GET_MOVIES } from '../constants'
 
 const movieState = {
-  list: []
+  list: [],
+  isFetching: false,
+  errorMessage: ''
 }
 
 export default function (state = movieState, action) {

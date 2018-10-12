@@ -49,7 +49,9 @@ class MoveWall extends Component {
             const title = movie.original_title
 
             return (
-              <li key={movie.id}>
+              <li key={movie.id} onClick={ () => {
+                console.log(movie)
+              }}>
                 {/* { backDrop !== null ? <img src={backDrop} alt={title} /> : undefined } */}
                 { poster !== null ? <img src={poster} alt={title} /> : undefined }
               </li>

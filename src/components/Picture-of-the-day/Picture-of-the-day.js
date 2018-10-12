@@ -11,19 +11,11 @@ import {
   CircleLoaderSc
 } from './styles'
 
-const statusContants = {
-  PENDING: 'PENDING',
-  LOADING: 'LOADING',
-  LOADED: 'LOADED',
-  FAILED: 'FAILED'
-}
-
 class PictureOfTheDay extends PureComponent {
   constructor (props) {
     super(props)
     this.state = {
-      hdEnabled: false,
-      url: ''
+      hdEnabled: false
     }
   }
   componentDidMount () {
@@ -48,10 +40,6 @@ class PictureOfTheDay extends PureComponent {
     this.setState({
       hdEnabled: !this.state.hdEnabled
     })
-  }
-
-  handleError () {
-    this.setState({ loading: statusContants.LOADED })
   }
 
   ImageLoaded = ({ target: img }) => {
