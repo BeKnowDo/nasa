@@ -5,14 +5,14 @@ import PictureOfTheDay from '../components/Picture-of-the-day'
 import MovieWall from '../components/MovieWall'
 
 // import actions
-import { fetchPicture } from '../store/actions'
+import { pictureActions, movieActions } from '../store/actions'
 
 class Home extends Component {
   render () {
     return (
       <Fragment>
         <PictureOfTheDay {...this.props} />
-        <MovieWall />
+        <MovieWall {...this.props} />
       </Fragment>
     )
   }
@@ -20,8 +20,12 @@ class Home extends Component {
 
 const mapStatetoProps = (state) => {
   const picture = state.picture
+  const movies = state.movies
 
   return {
+    movies: {
+      ...movies
+    },
     picture: {
       isFetching: picture.isFetching,
       url: picture.url,
@@ -34,4 +38,9 @@ const mapStatetoProps = (state) => {
   }
 }
 
-export default connect(mapStatetoProps, { fetchPicture })(Home)
+const mapDispatchToProps = {
+  ...pictureActions,
+  ...movieActions
+}
+
+export default connect(mapStatetoProps, mapDispatchToProps)(Home)

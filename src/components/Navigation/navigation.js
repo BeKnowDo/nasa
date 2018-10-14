@@ -10,13 +10,17 @@ const Navigation = () => {
     <NavigationSc>
       <ul>
         {routeNames.map(route => {
-          return (
-            <li key={route.unique}>
-              <a href={route.to} title={route.name}>
-                {route.name}
-              </a>
-            </li>
-          )
+          if (route.show === true) {
+            return (
+              <li key={route.unique}>
+                <a href={route.to} title={route.name}>
+                  {route.name}
+                </a>
+              </li>
+            )
+          } else {
+            return false
+          }
         })}
       </ul>
     </NavigationSc>

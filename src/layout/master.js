@@ -1,6 +1,6 @@
 import React from 'react'
 import { Grid, Row, Col } from 'react-styled-flexboxgrid'
-import {ThemeProvider} from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -27,11 +27,15 @@ const theme = {
   }
 }
 
+const GridSc = styled(Grid)`
+  padding-top: 38px;
+`
+
 const Master = props => ({
   render () {
     return (
       <ThemeProvider theme={theme}>
-        <Grid fluid>
+        <GridSc fluid>
           <Row>
             <Col xs={12}>
               <Header />
@@ -47,7 +51,7 @@ const Master = props => ({
               <Footer />
             </Col>
           </Row>
-        </Grid>
+        </GridSc>
       </ThemeProvider>
     )
   }

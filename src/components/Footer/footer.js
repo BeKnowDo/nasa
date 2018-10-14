@@ -5,7 +5,7 @@ import logo from '../../images/logo.png'
 const Footer = () => {
   return (
     <FooterSc>
-      <img src={logo} />
+      <img src={logo} alt="BKD's logo" />
       <h3>BKD Digital, Inc. - Veteran owned and Operated</h3>
     </FooterSc>
   )

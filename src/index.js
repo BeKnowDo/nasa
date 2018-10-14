@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { PersistGate } from 'redux-persist/integration/react'
 import { injectGlobal } from 'styled-components'
-import { device } from './styles/variables'
 
 // import routes
 import {
@@ -13,7 +13,11 @@ import Master from './layout/master'
 
 // Redux store management
 import { Provider } from 'react-redux'
-import store from './store'
+
+import storeConfig from './store'
+
+const store = storeConfig().store
+const persistor = storeConfig().persistor
 
 injectGlobal`
     body {
@@ -24,41 +28,31 @@ injectGlobal`
     }
     h1, h2, h3, h4, h5, h6 { margin: 0; padding: 0; }
     img { max-width: 100%; }
-
-  .zoomed-image {
-    background-size: cover;
-    cursor: pointer;
-
-    @media ${device.tablet} {
-      background-size: cover;
-      background-repeat: no-repeat;
-      /* background-position: center center !important; */
-      height: 400px !important;
-    }
-  }
 `
 
 ReactDOM.render(
   <Provider store={store}>
-    <Master>
-      <Router>
-        <Switch>
-          {
-            routeNames.map((route) => {
-              return (
-              // Create our stateless component which we'll export
-                <Route
-                  key={route.unique}
-                  path={route.path}
-                  component={route.component}
-                  exact={!!route.exact}
-                />
-              )
-            })
-          }
-        </Switch>
-      </Router>
-    </Master>
+    <PersistGate loading={null} persistor={persistor}>
+      <Master>
+        <Router>
+          <Switch>
+            {
+              routeNames.map((route) => {
+                return (
+                  <Route
+                    key={route.unique}
+                    path={route.to}
+                    component={route.component}
+                    exact={!!route.exact}
+                  />
+                )
+              })
+            }
+          </Switch>
+        </Router>
+      </Master>
+    </PersistGate>
+
   </Provider>
   ,
   document.getElementById('root')

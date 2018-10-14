@@ -1,4 +1,4 @@
-import { FETCHING_PIC, FETCHING_PIC_ERROR, FETCHING_PIC_SUCCESS } from '../constants'
+import { FETCH_PIC, FETCH_PIC_ERROR, FETCH_PIC_SUCCESS } from '../constants'
 
 const pictureState = {
   isFetching: false,
@@ -13,13 +13,13 @@ const pictureState = {
 
 const pictureOfTheDayReducer = (state = pictureState, action) => {
   switch (action.type) {
-    case FETCHING_PIC:
+    case FETCH_PIC:
       return {
         ...state,
         isFetching: true
       }
 
-    case FETCHING_PIC_SUCCESS:
+    case FETCH_PIC_SUCCESS:
       return {
         ...state,
         isFetching: false,
@@ -31,7 +31,7 @@ const pictureOfTheDayReducer = (state = pictureState, action) => {
         description: action.payload.description
       }
 
-    case FETCHING_PIC_ERROR:
+    case FETCH_PIC_ERROR:
       return {
         ...state,
         errorMessage: action.payload

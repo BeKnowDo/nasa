@@ -1,6 +1,24 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { colors, typography, backgrounds, device } from '../../styles/variables'
 import ContentZoom from 'react-content-zoom'
+
+const backgroundAnimation = keyframes`
+  0% {
+    background-position: right center;
+  }
+  25% {
+    background-position: center center;
+  }
+  50% {
+    background-position: left center;
+  }
+  75% {
+    background-position: center center;
+  }
+  100% {
+    background-position: right center;
+  }
+`
 
 const ContentZoomSc = styled(ContentZoom)`
   .zoomed-image {
@@ -19,21 +37,33 @@ const CircleLoaderSc = styled.div`
 
 const PictureOfTheDaySc = styled.div`
   position: relative;
+  overflow: hidden;
   z-index: auto;
 
   h2 {
     ${typography.alegreya};
-    font-weight: 700;
-    font-size: 26px;
+    border-radius: 4px;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 1);
+    background-color: ${colors.black};
     color: ${colors.white};
-    padding: 0 20px;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+
+    box-sizing: border-box;
+
+    padding: 4px 10px;
+    margin: 0 auto;
+
+    width: 96%;
     position: absolute;
     bottom: 24px;
-    text-shadow: 0 2px 2px rgba(0, 0, 0, 1);
+    left: 0;
+    right: 0;
 
     &::first-letter {
-      font-size: 30px;
-      margin-right: 2px;
+      font-size: 22px;
+      margin-right: 1px;
       color: ${colors.red};
     }
   }
@@ -58,16 +88,21 @@ const DescriptionSc = styled.p`
 
 const ImageWrapperSc = styled.div`
   position: relative;
+  overflow: hidden;
   ${props => props.background ? `
     height: 60vh;
     background-image: url(${props.background});
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: bottom right;
+    background-position: right center;
     background-color: ${colors.black};
+    animation: ${backgroundAnimation} 20s ease-in-out infinite;
+
     img {
       visibility: hidden;
     }
+
+
   ` : `
     img {
       display: block;
@@ -200,9 +235,10 @@ const LoaderSc = styled.div`
 
 const DownloadLinkSc = styled.a`
   color: ${colors.white};
-  font-size: 28px;
+  font-size: 16px;
   padding: 0 0 0 12px;
 `
+
 const MagifyWrapper = styled.div`
 
   img {

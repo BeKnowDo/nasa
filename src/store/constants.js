@@ -1,17 +1,27 @@
 const GET_MOVIES = 'get-movies'
-const FETCHING_PIC = 'fetching-pic'
-const FETCHING_PIC_ERROR = 'fetching-pic-error'
-const FETCHING_PIC_SUCCESS = 'fetching-pic-success'
-const FETCH_MOVIES = 'fetching-movies'
-const FETCH_MOVIES_SUCCESS = 'fetching-pic-success'
-const FETCH_MOVIES_ERROR = 'fetching-pic-error'
+const FETCH_PIC = 'fetch-pic'
+const FETCH_PIC_ERROR = 'fetch-pic-error'
+const FETCH_PIC_SUCCESS = 'fetch-pic-success'
+const FETCH_MOVIES = 'fetch-movies'
+const FETCH_MOVIES_SUCCESS = 'fetch-movies-success'
+const FETCH_MOVIES_ERROR = 'fetch-movies-error'
+
+const SET_ACTIVE_MOVIE = 'set-active-movie'
+
+const FETCH_MOVIE_DETAIL = 'fetch-movie-detail'
+const FETCH_MOVIE_DETAIL_ERROR = 'fetch-movie-detail-error'
+const FETCH_MOVIE_DETAIL_SUCCESS = 'fetch-movie-detail-success'
 
 export {
   GET_MOVIES,
-  FETCHING_PIC,
-  FETCHING_PIC_ERROR,
-  FETCHING_PIC_SUCCESS,
+  FETCH_PIC,
+  FETCH_PIC_ERROR,
+  FETCH_PIC_SUCCESS,
   FETCH_MOVIES,
   FETCH_MOVIES_SUCCESS,
-  FETCH_MOVIES_ERROR
+  FETCH_MOVIES_ERROR,
+  SET_ACTIVE_MOVIE,
+  FETCH_MOVIE_DETAIL,
+  FETCH_MOVIE_DETAIL_SUCCESS,
+  FETCH_MOVIE_DETAIL_ERROR
 }

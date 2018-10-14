@@ -54,7 +54,7 @@ class PictureOfTheDay extends PureComponent {
     })
   }
 
-  descriptionToggle = () => {};
+  descriptionToggle = () => { };
 
   imageContainer = () => {
     const date = moment(this.props.picture.date)
@@ -63,7 +63,6 @@ class PictureOfTheDay extends PureComponent {
     const year = date.year()
     const imgUrl = this.props.picture.url
     const hdurl = this.props.picture.hdurl
-
     const currentImageUrl = this.state.hdEnabled ? hdurl : imgUrl
 
     return (
@@ -75,7 +74,7 @@ class PictureOfTheDay extends PureComponent {
           </DownloadLinkSc>
         </h2>
 
-        <img src={currentImageUrl} />
+        <img src={currentImageUrl} alt="NASA's treat of the day" />
 
         {this.hdControl()}
 
@@ -86,7 +85,7 @@ class PictureOfTheDay extends PureComponent {
   render (props) {
     return (
       <PictureOfTheDaySc>
-        { this.props.picture.isFetching ? (
+        {this.props.picture.isFetching ? (
           <CircleLoaderSc>
             <CircleLoader
               sizeUnit={'px'}
@@ -95,7 +94,7 @@ class PictureOfTheDay extends PureComponent {
               loading
             />
           </CircleLoaderSc>
-        ) : this.imageContainer() }
+        ) : this.imageContainer()}
       </PictureOfTheDaySc>
     )
   }
