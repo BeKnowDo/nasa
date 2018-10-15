@@ -1,7 +1,5 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import { compose } from 'redux'
-import { withRouter } from 'react-router'
 
 import MovieWall from '../components/MovieWall'
 import MovieDetail from '../components/MovieDetail'
@@ -43,7 +41,4 @@ const mapDispatchToProps = {
   ...movieDetailActions
 }
 
-export default compose(
-  withRouter,
-  connect(mapStatetoProps, mapDispatchToProps)
-)(Movies)
+export default connect(mapStatetoProps, mapDispatchToProps)(Movies)

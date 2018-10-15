@@ -40,10 +40,10 @@ ReactDOM.render(
               routeNames.map((route) => {
                 return (
                   <Route
+                    exact={!!route.exact}
                     key={route.unique}
                     path={route.to}
                     component={route.component}
-                    exact={!!route.exact}
                   />
                 )
               })

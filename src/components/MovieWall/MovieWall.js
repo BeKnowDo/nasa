@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router'
+
 import { MDB } from '../../config/endpoints'
 import { MovieWallSc, MovieWallItemSc } from './styles'
 
@@ -27,6 +29,7 @@ class MoveWall extends Component {
                     const id = movie.id
                     this.props.fetchMovieDetail(id)
                     this.props.history.push(`/movies/${id}`)
+                    return <Redirect to={`/movies/${id}`} />
                   }}
                 >
                   {poster !== null ? <img src={poster} alt={title} /> : undefined}
