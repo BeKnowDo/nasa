@@ -5,7 +5,7 @@ import PictureOfTheDay from '../components/Picture-of-the-day'
 import MovieWall from '../components/MovieWall'
 
 // import actions
-import { pictureActions, movieActions } from '../store/actions'
+import { pictureActions, movieActions, movieDetailActions } from '../store/actions'
 
 class Home extends Component {
   render () {
@@ -40,7 +40,8 @@ const mapStatetoProps = (state) => {
 
 const mapDispatchToProps = {
   ...pictureActions,
-  ...movieActions
+  ...movieActions,
+  ...movieDetailActions
 }
 
 export default connect(mapStatetoProps, mapDispatchToProps)(Home)

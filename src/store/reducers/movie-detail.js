@@ -47,6 +47,11 @@ const movieDetailReducer = (state = movieDetailState, action) => {
         ...state,
         ...data
       }
+
+    case FETCH_MOVIE_DETAIL_ERROR:
+      return {
+        ...state
+      }
     default:
       return state
   }
