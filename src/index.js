@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { PersistGate } from 'redux-persist/integration/react'
 import { injectGlobal } from 'styled-components'
 
 // import routes
@@ -17,7 +16,6 @@ import { Provider } from 'react-redux'
 import storeConfig from './store'
 
 const store = storeConfig().store
-const persistor = storeConfig().persistor
 
 injectGlobal`
     body {
@@ -32,26 +30,24 @@ injectGlobal`
 
 ReactDOM.render(
   <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <Master>
-        <Router>
-          <Switch>
-            {
-              routeNames.map((route) => {
-                return (
-                  <Route
-                    exact={!!route.exact}
-                    key={route.unique}
-                    path={route.to}
-                    component={route.component}
-                  />
-                )
-              })
-            }
-          </Switch>
-        </Router>
-      </Master>
-    </PersistGate>
+    <Master>
+      <Router>
+        <Switch>
+          {
+            routeNames.map((route) => {
+              return (
+                <Route
+                  exact={!!route.exact}
+                  key={route.unique}
+                  path={route.to}
+                  component={route.component}
+                />
+              )
+            })
+          }
+        </Switch>
+      </Router>
+    </Master>
 
   </Provider>
   ,

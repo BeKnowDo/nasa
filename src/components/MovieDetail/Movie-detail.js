@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import { MovieContainer } from './styles'
 
 class MovieDetail extends PureComponent {
+
   componentDidMount () {
     this.props.fetchMovieDetail(this.props.match.params.id)
   }

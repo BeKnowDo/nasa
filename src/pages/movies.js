@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
 
 import MovieWall from '../components/MovieWall'
 import MovieDetail from '../components/MovieDetail'
@@ -41,4 +42,4 @@ const mapDispatchToProps = {
   ...movieDetailActions
 }
 
-export default connect(mapStatetoProps, mapDispatchToProps)(Movies)
+export default withRouter(connect(mapStatetoProps, mapDispatchToProps)(Movies))
