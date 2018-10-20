@@ -21,8 +21,8 @@ export const fetchPictureSuccess = data => ({
 })
 
 // Fetch the picture
-export const fetchPicture = () => {
-  return async dispatch => {
+export const fetchPicture = dispatch => {
+  return async () => {
     try {
       await axios.get(NASA.POTD)
         .then(response => {

@@ -16,8 +16,8 @@ class Movies extends Component {
   render () {
     return (
       <Fragment>
-        <MovieDetail {...this.props} />
-        <MovieWall {...this.props} />
+        <MovieDetail {...this.props} fetchMovieDetail={this.props.fetchMovieDetail} />
+        <MovieWall {...this.props.movies} fetchMovies={this.props.fetchMovies} />
       </Fragment>
     )
   }
@@ -37,9 +37,16 @@ const mapStatetoProps = (state) => {
   }
 }
 
-const mapDispatchToProps = {
-  ...movieActions,
-  ...movieDetailActions
+const mapDispatchToProps = dispatch => {
+  return {
+    ...movieActions,
+    ...movieDetailActions
+  }
 }
+
+// const mapDispatchToProps = dispatch => ({
+//   fetchMovieDetail: id => movieDetailActions.fetchMovieDetail,
+//   ...movieActions
+// })
 
 export default withRouter(connect(mapStatetoProps, mapDispatchToProps)(Movies))

@@ -21,7 +21,7 @@ export const fetchMovieDetailError = () => ({
 })
 
 // fetch movie detail
-export const fetchMovieDetail = id => {
+export const fetchMovieDetail = id => () => {
   return async dispatch => {
     dispatch(fetchMovieDetailRequest())
     try {

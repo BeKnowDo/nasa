@@ -6,19 +6,37 @@ import storage from 'redux-persist/lib/storage' // defaults to localStorage for 
 import thunk from 'redux-thunk'
 import reducers from './reducers'
 
-const persistConfig = {
-  key: 'nasa',
-  storage
-}
-const logger = createLogger()
-const persistedReducer = persistReducer(persistConfig, reducers)
+// const persistConfig = {
+//   key: 'nasa',
+//   storage
+// }
+// const logger = createLogger()
+// const persistedReducer = persistReducer(persistConfig, reducers)
+
+// export default () => {
+//   let store = createStore(
+//     persistedReducer,
+//     {},
+//     compose(applyMiddleware(thunk))
+//   )
+//   let persistor = persistStore(store)
+//   return { store, persistor }
+// }
+
+const composeEnhancers =
+  typeof window === 'object' &&
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+      // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+    }) : compose
 
 export default () => {
   let store = createStore(
-    persistedReducer,
+    reducers,
     {},
-    compose(applyMiddleware(thunk))
+    composeEnhancers(
+      applyMiddleware(thunk)
+    )
   )
-  let persistor = persistStore(store)
-  return { store, persistor }
+  return { store }
 }

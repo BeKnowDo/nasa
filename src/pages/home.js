@@ -6,14 +6,14 @@ import PictureOfTheDay from '../components/Picture-of-the-day'
 import MovieWall from '../components/MovieWall'
 
 // import actions
-import { pictureActions, movieActions, movieDetailActions } from '../store/actions'
+import { pictureActions, movieActions } from '../store/actions'
 
 class Home extends Component {
   render () {
     return (
       <Fragment>
-        <PictureOfTheDay {...this.props} />
-        <MovieWall {...this.props} />
+        <PictureOfTheDay {...this.props.picture} fetchPicture={this.props.fetchPicture} />
+        <MovieWall {...this.props.movies} fetchMovies={this.props.fetchMovies} />
       </Fragment>
     )
   }
@@ -39,9 +39,9 @@ const mapStatetoProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  fetchPicture: pictureActions.fetchPicture,
-  fetchMovies: movieActions.fetchMovies
+const mapDispatchToProps = dispatch => ({
+  fetchPicture: pictureActions.fetchPicture(dispatch),
+  fetchMovies: movieActions.fetchMovies(dispatch)
 })
 
 export default withRouter(connect(mapStatetoProps, mapDispatchToProps)(Home))

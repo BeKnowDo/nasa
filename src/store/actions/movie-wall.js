@@ -35,6 +35,7 @@ export const setActiveMovie = data => {
 
 // fetch movies
 export const fetchMovies = () => {
+  console.log('fetching movies')
   return async dispatch => {
     dispatch(fetchMoviesRequest())
     try {

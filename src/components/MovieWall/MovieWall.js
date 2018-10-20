@@ -6,10 +6,7 @@ import { MovieWallSc, MovieWallItemSc } from './styles'
 
 class MoveWall extends Component {
   componentDidMount () {
-    console.log(this.props)
-    if (!this.props.list) {
-      this.props.fetchMovies()
-    }
+    return this.props.list.length <= 0 ? this.props.fetchMovies() : false
   }
 
   movieGrid (list) {
@@ -29,7 +26,7 @@ class MoveWall extends Component {
                   background={poster}
                   onClick={() => {
                     // this.props.fetchMovieDetail(id)
-                    console.log('here')
+                    // console.log('here')
                     // return (<Redirect push to={`/movies/${id}`} />)
                   }}
                 >
@@ -52,7 +49,7 @@ class MoveWall extends Component {
   render () {
     return (
       <MovieWallSc>
-        {this.props.movies === null ? 'No movies' : this.movieGrid(this.props.movies.list)}
+        {this.props.list === undefined ? 'No movies' : this.movieGrid(this.props.list)}
       </MovieWallSc>
     )
   }
