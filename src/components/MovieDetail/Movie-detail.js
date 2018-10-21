@@ -4,7 +4,8 @@ import { MovieContainer } from './styles'
 class MovieDetail extends PureComponent {
   componentDidMount () {
     console.log(this.props)
-    this.props.fetchMovieDetail(this.props.match.params.id)
+    const id = this.props.match.params.id
+    this.props.fetchMovieDetail(id)
   }
 
   render () {
@@ -25,22 +26,46 @@ class MovieDetail extends PureComponent {
 
     return (
       <MovieContainer>
-        {title}
-        {adult}
-        {description}
-        {rateCount}
-        {rating}
-        {releaseDate}
-        {imdb}
-        {id}
-        {budget}
-        {poster}
-        {revenue}
-        {status}
+        <h1>
+          {title}
+        </h1>
+        <div>
+          {adult}
+        </div>
+        <div>
+          {description}
+        </div>
+        <div>
+          {rateCount}
+        </div>
+        <div>
+          {rating}
+        </div>
+        <div>
+          {releaseDate}
+        </div>
+        <div>
+          {imdb}
+        </div>
+        <div>
+          {id}
+        </div>
+        <div>
+          {budget}
+        </div>
+        <div>
+          {poster}
+        </div>
+        <div>
+          {revenue}
+        </div>
+        <div>
+          {status}
+        </div>
 
-        {genres.map(genre => {
+        { genres.map(genre => {
           return genre.name
-        })}
+        }) }
 
       </MovieContainer>
     )

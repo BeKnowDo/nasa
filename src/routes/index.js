@@ -23,6 +23,7 @@ const routeNames = [
     name: 'Movie Detail Page',
     to: '/movies/:id',
     show: false,
+    exact: true,
     component: Movies
   }
 ]

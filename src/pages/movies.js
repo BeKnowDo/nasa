@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
+import { bindActionCreators } from 'redux'
 
 import MovieWall from '../components/MovieWall'
 import MovieDetail from '../components/MovieDetail'
@@ -9,27 +10,24 @@ import MovieDetail from '../components/MovieDetail'
 import { movieActions, movieDetailActions } from '../store/actions'
 
 class Movies extends Component {
-  constructor (props) {
-    super()
-  }
-
   render () {
     return (
       <Fragment>
-        <MovieDetail {...this.props} fetchMovieDetail={this.props.fetchMovieDetail} />
+        <MovieDetail match={this.props.match} details={this.props.details} fetchMovieDetail={this.props.fetchMovieDetail} />
         <MovieWall {...this.props.movies} fetchMovies={this.props.fetchMovies} />
       </Fragment>
     )
   }
 }
 
-const mapStatetoProps = (state) => {
+const mapStatetoProps = (state, ownProps) => {
   const movies = state.movies
   const details = state.details
 
   return {
     movies: {
-      ...movies
+      ...movies,
+      ...ownProps
     },
     details: {
       ...details
@@ -39,14 +37,9 @@ const mapStatetoProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    ...movieActions,
-    ...movieDetailActions
+    fetchMovies: bindActionCreators(movieActions.fetchMovies, dispatch),
+    fetchMovieDetail: bindActionCreators(movieDetailActions.fetchMovieDetail, dispatch)
   }
 }
-
-// const mapDispatchToProps = dispatch => ({
-//   fetchMovieDetail: id => movieDetailActions.fetchMovieDetail,
-//   ...movieActions
-// })
 
 export default withRouter(connect(mapStatetoProps, mapDispatchToProps)(Movies))

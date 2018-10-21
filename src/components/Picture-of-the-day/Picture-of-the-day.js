@@ -19,7 +19,6 @@ class PictureOfTheDay extends PureComponent {
     }
   }
   componentDidMount () {
-    console.log(this.props)
     this.props.fetchPicture()
   }
 

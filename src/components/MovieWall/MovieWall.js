@@ -25,9 +25,7 @@ class MoveWall extends Component {
                   key={movie.id}
                   background={poster}
                   onClick={() => {
-                    // this.props.fetchMovieDetail(id)
-                    // console.log('here')
-                    // return (<Redirect push to={`/movies/${id}`} />)
+                    console.log(this.props)
                   }}
                 >
 

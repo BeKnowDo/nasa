@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { injectGlobal } from 'styled-components'
+import { Provider } from 'react-redux'
 
 // import routes
 import {
@@ -9,9 +10,6 @@ import {
 } from './routes'
 
 import Master from './layout/master'
-
-// Redux store management
-import { Provider } from 'react-redux'
 
 import storeConfig from './store'
 

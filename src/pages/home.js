@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
+import { bindActionCreators } from 'redux'
 
 import PictureOfTheDay from '../components/Picture-of-the-day'
 import MovieWall from '../components/MovieWall'
@@ -39,9 +40,11 @@ const mapStatetoProps = (state) => {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  fetchPicture: pictureActions.fetchPicture(dispatch),
-  fetchMovies: movieActions.fetchMovies(dispatch)
-})
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchPicture: bindActionCreators(pictureActions.fetchPicture, dispatch),
+    fetchMovies: bindActionCreators(movieActions.fetchMovies, dispatch)
+  }
+}
 
 export default withRouter(connect(mapStatetoProps, mapDispatchToProps)(Home))
