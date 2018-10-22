@@ -1,20 +1,19 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router'
 import { bindActionCreators } from 'redux'
 
 import PictureOfTheDay from '../components/Picture-of-the-day'
 import MovieWall from '../components/MovieWall'
 
 // import actions
-import { pictureActions, movieActions } from '../store/actions'
+import { pictureActions, movieActions, movieDetailActions } from '../store/actions'
 
 class Home extends Component {
   render () {
     return (
       <Fragment>
         <PictureOfTheDay {...this.props.picture} fetchPicture={this.props.fetchPicture} />
-        <MovieWall {...this.props.movies} fetchMovies={this.props.fetchMovies} />
+        <MovieWall history={this.props.history} {...this.props.movies} fetchMovies={this.props.fetchMovies} fetchMovieDetail={this.props.fetchMovieDetail} />
       </Fragment>
     )
   }
@@ -43,8 +42,10 @@ const mapStatetoProps = (state) => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchPicture: bindActionCreators(pictureActions.fetchPicture, dispatch),
-    fetchMovies: bindActionCreators(movieActions.fetchMovies, dispatch)
+    fetchMovies: bindActionCreators(movieActions.fetchMovies, dispatch),
+    fetchMovieDetail: bindActionCreators(movieDetailActions.fetchMovieDetail, dispatch)
+
   }
 }
 
-export default withRouter(connect(mapStatetoProps, mapDispatchToProps)(Home))
+export default connect(mapStatetoProps, mapDispatchToProps)(Home)

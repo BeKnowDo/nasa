@@ -1,7 +1,10 @@
-import { createStore, applyMiddleware, compose } from 'redux'
-import { createLogger } from 'redux-logger'
-import { persistStore, persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage' // defaults to localStorage for web and AsyncStorage for react-native
+import { applyMiddleware, compose, createStore } from 'redux'
+// import { createLogger } from 'redux-logger'
+// import { persistStore, persistReducer } from 'redux-persist'
+// import storage from 'redux-persist/lib/storage' // defaults to localStorage for web and AsyncStorage for react-native
+// import { createBrowserHistory } from 'history'
+import { connectRouter, routerMiddleware } from 'connected-react-router'
+import createBrowserHistory from 'history/createBrowserHistory'
 
 import thunk from 'redux-thunk'
 import reducers from './reducers'
@@ -31,12 +34,23 @@ const composeEnhancers =
     }) : compose
 
 export default () => {
-  let store = createStore(
-    reducers,
+  const history = createBrowserHistory()
+  const store = createStore(
+    connectRouter(history)(reducers), // new root reducer with router state
     {},
     composeEnhancers(
-      applyMiddleware(thunk)
+      applyMiddleware(
+        thunk,
+        routerMiddleware(history)
+      )
     )
   )
-  return { store }
+  // let store = createStore(
+  //   reducers,
+  //   {},
+  //   composeEnhancers(
+  //     applyMiddleware(thunk)
+  //   )
+  // )
+  return { store, history }
 }

@@ -10,11 +10,15 @@ import MovieDetail from '../components/MovieDetail'
 import { movieActions, movieDetailActions } from '../store/actions'
 
 class Movies extends Component {
+  constructor (props) {
+    super(props)
+    console.log(this.props)
+  }
   render () {
     return (
       <Fragment>
         <MovieDetail match={this.props.match} details={this.props.details} fetchMovieDetail={this.props.fetchMovieDetail} />
-        <MovieWall {...this.props.movies} fetchMovies={this.props.fetchMovies} />
+        <MovieWall history={this.props.history} {...this.props.movies} fetchMovies={this.props.fetchMovies} fetchMovieDetail={this.props.fetchMovieDetail} />
       </Fragment>
     )
   }
@@ -25,6 +29,7 @@ const mapStatetoProps = (state, ownProps) => {
   const details = state.details
 
   return {
+    // history: { ...history },
     movies: {
       ...movies,
       ...ownProps

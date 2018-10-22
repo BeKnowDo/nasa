@@ -1,19 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Switch } from 'react-router-dom'
+import { ConnectedRouter } from 'connected-react-router'
 import { injectGlobal } from 'styled-components'
 import { Provider } from 'react-redux'
 
-// import routes
-import {
-  routeNames
-} from './routes'
-
 import Master from './layout/master'
+import RouterComponent from './components/Router'
 
 import storeConfig from './store'
 
 const store = storeConfig().store
+const history = storeConfig().history
 
 injectGlobal`
     body {
@@ -30,23 +28,13 @@ ReactDOM.render(
   <Provider store={store}>
     <Master>
       <Router>
-        <Switch>
-          {
-            routeNames.map((route) => {
-              return (
-                <Route
-                  exact={!!route.exact}
-                  key={route.unique}
-                  path={route.to}
-                  component={route.component}
-                />
-              )
-            })
-          }
-        </Switch>
+        <ConnectedRouter history={history}>
+          <Switch>
+            <RouterComponent />
+          </Switch>
+        </ConnectedRouter>
       </Router>
     </Master>
-
   </Provider>
   ,
   document.getElementById('root')

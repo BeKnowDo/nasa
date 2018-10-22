@@ -1,9 +1,10 @@
 import React, { PureComponent } from 'react'
-import { MovieContainer } from './styles'
+import { MovieContainer, MovieContent } from './styles'
+import { MDB } from '../../config/endpoints'
 
 class MovieDetail extends PureComponent {
   componentDidMount () {
-    console.log(this.props)
+    // console.log(this.props)
     const id = this.props.match.params.id
     this.props.fetchMovieDetail(id)
   }
@@ -24,44 +25,49 @@ class MovieDetail extends PureComponent {
     const revenue = data.revenue
     const status = data.status
 
+    const postUrl = poster ? MDB.imageUrl + poster : ''
+
     return (
-      <MovieContainer>
-        <h1>
-          {title}
-        </h1>
-        <div>
-          {adult}
-        </div>
-        <div>
-          {description}
-        </div>
-        <div>
-          {rateCount}
-        </div>
-        <div>
-          {rating}
-        </div>
-        <div>
-          {releaseDate}
-        </div>
-        <div>
-          {imdb}
-        </div>
-        <div>
-          {id}
-        </div>
-        <div>
-          {budget}
-        </div>
-        <div>
-          {poster}
-        </div>
-        <div>
-          {revenue}
-        </div>
-        <div>
-          {status}
-        </div>
+      <MovieContainer poster={postUrl}>
+        <MovieContent poster={postUrl}>
+          <h1>
+            {title}
+          </h1>
+          <div>
+            {adult}
+          </div>
+          <div>
+            {description}
+          </div>
+          <div>
+            {rateCount}
+          </div>
+          <div>
+            {rating}
+          </div>
+          <div>
+            {releaseDate}
+          </div>
+          <div>
+            {imdb}
+          </div>
+          <div>
+            {id}
+          </div>
+          <div>
+            {budget}
+          </div>
+          <div>
+            {poster}
+          </div>
+          <div>
+            {revenue}
+          </div>
+          <div>
+            {status}
+          </div>
+
+        </MovieContent>
 
         { genres.map(genre => {
           return genre.name
