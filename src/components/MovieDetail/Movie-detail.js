@@ -1,12 +1,15 @@
 import React, { PureComponent } from 'react'
+import { withRouter } from 'react-router'
+
 import { MovieContainer, MovieContent } from './styles'
 import { MDB } from '../../config/endpoints'
 
 class MovieDetail extends PureComponent {
   componentDidMount () {
-    // console.log(this.props)
     const id = this.props.match.params.id
     this.props.fetchMovieDetail(id)
+    console.log('here')
+    console.log(this.props)
   }
 
   render () {
@@ -29,6 +32,7 @@ class MovieDetail extends PureComponent {
 
     return (
       <MovieContainer poster={postUrl}>
+
         <MovieContent poster={postUrl}>
           <h1>
             {title}
@@ -78,6 +82,8 @@ class MovieDetail extends PureComponent {
   }
 }
 
-export default MovieDetail
+// export default MovieDetail
+
+export default withRouter(MovieDetail)
 
 // 48b43c71c226d58239efb833d05ab17c

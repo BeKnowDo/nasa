@@ -1,56 +1,41 @@
-import { applyMiddleware, compose, createStore } from 'redux'
 // import { createLogger } from 'redux-logger'
 // import { persistStore, persistReducer } from 'redux-persist'
 // import storage from 'redux-persist/lib/storage' // defaults to localStorage for web and AsyncStorage for react-native
-// import { createBrowserHistory } from 'history'
+import { applyMiddleware, compose, createStore } from 'redux'
 import { connectRouter, routerMiddleware } from 'connected-react-router'
-import createBrowserHistory from 'history/createBrowserHistory'
-
+import createHistory from 'history/createBrowserHistory'
 import thunk from 'redux-thunk'
+
 import reducers from './reducers'
 
-// const persistConfig = {
-//   key: 'nasa',
-//   storage
-// }
-// const logger = createLogger()
-// const persistedReducer = persistReducer(persistConfig, reducers)
+export const history = createHistory()
+const enhancers = []
+const initialState = {}
 
-// export default () => {
-//   let store = createStore(
-//     persistedReducer,
-//     {},
-//     compose(applyMiddleware(thunk))
-//   )
-//   let persistor = persistStore(store)
-//   return { store, persistor }
-// }
+const middleware = [
+  thunk,
+  routerMiddleware(history)
+]
 
-const composeEnhancers =
-  typeof window === 'object' &&
-  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-      // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
-    }) : compose
+if (process.env.NODE_ENV === 'development') {
+  const devToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION__
+
+  if (typeof devToolsExtension === 'function') {
+    enhancers.push(devToolsExtension())
+  }
+}
+
+const composedEnhancers = compose(
+  applyMiddleware(...middleware),
+  ...enhancers
+)
+
+const store = createStore(
+  connectRouter(history)(reducers),
+  initialState,
+  composedEnhancers
+)
 
 export default () => {
-  const history = createBrowserHistory()
-  const store = createStore(
-    connectRouter(history)(reducers), // new root reducer with router state
-    {},
-    composeEnhancers(
-      applyMiddleware(
-        thunk,
-        routerMiddleware(history)
-      )
-    )
-  )
-  // let store = createStore(
-  //   reducers,
-  //   {},
-  //   composeEnhancers(
-  //     applyMiddleware(thunk)
-  //   )
-  // )
   return { store, history }
 }

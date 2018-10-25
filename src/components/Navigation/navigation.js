@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import { NavigationSc } from './styles'
 
 // import routes
@@ -13,9 +15,9 @@ const Navigation = () => {
           if (route.show === true) {
             return (
               <li key={route.unique}>
-                <a href={route.to} title={route.name}>
+                <Link to={route.to} title={route.name}>
                   {route.name}
-                </a>
+                </Link>
               </li>
             )
           } else {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 import { MDB } from '../../config/endpoints'
 import { MovieWallSc, MovieWallItemSc } from './styles'
@@ -20,16 +21,21 @@ class MoveWall extends Component {
 
             if (poster) {
               return (
-                <MovieWallItemSc
-                  key={movie.id}
-                  background={poster}
-                  onClick={async () => {
-                    await this.props.history.push(`/movies/${id}`)
-                    this.props.fetchMovieDetail(id)
-                  }}
-                >
-                  {poster !== null ? <img src={poster} alt={title} /> : undefined}
-                </MovieWallItemSc>
+                poster !== null
+                  ? <MovieWallItemSc
+                    key={movie.id}
+                    background={poster}
+                    // onClick={async () => {
+                    //   await this.props.history.push(`/movies/${id}`)
+                    //   this.props.fetchMovieDetail(id)
+                    // }}
+                  >
+                    <Link
+                      to={`/movies/${id}`}
+                    >
+                      <img src={poster} alt={title} />
+                    </Link>
+                  </MovieWallItemSc> : undefined
               )
             } else {
               return false

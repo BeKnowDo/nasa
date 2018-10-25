@@ -6,7 +6,7 @@ import {
   routeNames
 } from '../../routes'
 
-const RouterComponent = ({ history }) => {
+const RouterComponent = () => {
   return (
     routeNames.map((route) => {
       return (

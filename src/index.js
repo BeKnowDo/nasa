@@ -26,15 +26,17 @@ injectGlobal`
 
 ReactDOM.render(
   <Provider store={store}>
-    <Master>
-      <Router>
-        <ConnectedRouter history={history}>
-          <Switch>
-            <RouterComponent />
-          </Switch>
-        </ConnectedRouter>
-      </Router>
-    </Master>
+    <ConnectedRouter history={history}>
+      <Master history={history}>
+        <Router>
+          <div>
+            <Switch>
+              <RouterComponent />
+            </Switch>
+          </div>
+        </Router>
+      </Master>
+    </ConnectedRouter>
   </Provider>
   ,
   document.getElementById('root')
