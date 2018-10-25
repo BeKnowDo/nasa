@@ -8,8 +8,13 @@ class MovieDetail extends PureComponent {
   componentDidMount () {
     const id = this.props.match.params.id
     this.props.fetchMovieDetail(id)
-    console.log('here')
-    console.log(this.props)
+  }
+
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.match.params.id && this.props.match.params.id !== nextProps.match.params.id) {
+      const id = nextProps.match.params.id
+      this.props.fetchMovieDetail(id)
+    }
   }
 
   render () {
