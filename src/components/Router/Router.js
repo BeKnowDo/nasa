@@ -9,14 +9,25 @@ import {
 const RouterComponent = () => {
   return (
     routeNames.map((route) => {
-      return (
-        <Route
-          exact={!!route.exact}
-          key={route.unique}
-          path={route.to}
-          component={route.component}
-        />
-      )
+      if (route.render) {
+        return (
+          <Route
+            exact={!!route.exact}
+            key={route.unique}
+            path={route.to}
+            render={route.render}
+          />
+        )
+      } else if (route.component) {
+        return (
+          <Route
+            exact={!!route.exact}
+            key={route.unique}
+            path={route.to}
+            component={route.component}
+          />
+        )
+      }
     })
   )
 }
