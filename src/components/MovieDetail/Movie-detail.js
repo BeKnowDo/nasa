@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react'
-import { withRouter } from 'react-router'
 
 import { MovieContainer, MovieContent } from './styles'
 import { MDB } from '../../config/endpoints'
@@ -89,6 +88,6 @@ class MovieDetail extends PureComponent {
 
 // export default MovieDetail
 
-export default withRouter(MovieDetail)
+export default MovieDetail
 
 // 48b43c71c226d58239efb833d05ab17c
