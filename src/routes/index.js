@@ -1,3 +1,4 @@
+import React from 'react'
 import Home from '../pages/home'
 import Movies from '../pages/movies'
 
@@ -16,7 +17,8 @@ const routeNames = [
     name: 'NASA Image Search',
     to: '/search',
     exact: true,
-    show: true
+    show: true,
+    render: () => <div>SEARCH PLACEHOLDER</div>
   },
   {
     unique: 'MOVIES',
