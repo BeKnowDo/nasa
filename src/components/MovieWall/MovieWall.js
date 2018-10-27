@@ -25,10 +25,6 @@ class MoveWall extends Component {
                   ? <MovieWallItemSc
                     key={movie.id}
                     background={poster}
-                    // onClick={async () => {
-                    //   await this.props.history.push(`/movies/${id}`)
-                    //   this.props.fetchMovieDetail(id)
-                    // }}
                   >
                     <Link
                       to={`/movies/${id}`}
