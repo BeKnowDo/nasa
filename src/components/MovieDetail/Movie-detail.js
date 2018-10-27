@@ -66,7 +66,7 @@ class MovieDetail extends PureComponent {
             {budget}
           </div>
           <div>
-            {poster}
+            {postUrl}
           </div>
           <div>
             {revenue}
