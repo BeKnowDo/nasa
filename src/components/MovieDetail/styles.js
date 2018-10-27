@@ -11,9 +11,7 @@ const MovieContainer = styled.div`
     padding: 10px 0 30px;
   }
 
-
   ${props => props.poster ? `
-
   position: relative;
   :after {
     content: '';
@@ -37,6 +35,7 @@ const MovieContent = styled.div`
   z-index: 1;
   padding: 20px;
   background-color: ${colors.white};
+  color: ${colors.black};
 
   ${props => props.poster ? `
   opacity: .9;

@@ -25,7 +25,7 @@ const MovieWallSc = styled.section`
 const MovieWallItemSc = styled.li`
   transition: width .1s ease-in-out;
   flex: 0 0 auto;
-  width: 60%;
+  width: 30%;
   padding: 0;
   margin: 20px;
   ${props => props.background ? `

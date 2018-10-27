@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router'
 import { bindActionCreators } from 'redux'
 
 import MovieWall from '../components/MovieWall'
@@ -14,6 +13,7 @@ class Movies extends Component {
     return (
       <Fragment>
         <MovieDetail
+          history={this.props.history}
           match={this.props.match}
           details={this.props.details}
           fetchMovieDetail={this.props.fetchMovieDetail}
@@ -51,4 +51,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default withRouter(connect(mapStatetoProps, mapDispatchToProps)(Movies))
+export default connect(mapStatetoProps, mapDispatchToProps)(Movies)
