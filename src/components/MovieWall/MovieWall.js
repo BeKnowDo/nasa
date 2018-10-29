@@ -6,6 +6,7 @@ import { MovieWallSc, MovieWallItemSc } from './styles'
 
 class MoveWall extends Component {
   componentDidMount () {
+    // console.log(this.props)
     return this.props.list.length <= 0 ? this.props.fetchMovies() : false
   }
 

@@ -1,7 +1,15 @@
 import styled from 'styled-components'
+
 import { colors } from '../../styles/variables'
 
-const MovieContainer = styled.div`
+export const MovieTitle = styled.h2`
+  text-decoration: underline;
+  text-align: center;
+  font-weight: 700;
+  padding: 0 0 20px;
+`
+
+export const MovieContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -9,6 +17,10 @@ const MovieContainer = styled.div`
   h1 {
     font-size: 24px;
     padding: 10px 0 30px;
+  }
+
+  p {
+    font-size: 14px;
   }
 
   ${props => props.poster ? `
@@ -30,7 +42,7 @@ const MovieContainer = styled.div`
 
 `
 
-const MovieContent = styled.div`
+export const MovieContent = styled.div`
   position: relative;
   z-index: 1;
   padding: 20px;
@@ -39,14 +51,19 @@ const MovieContent = styled.div`
 
   ${props => props.poster ? `
   opacity: .9;
-  border-radius: 4px;
+  border-radius: 2px;
   border: 1px solid ${colors.lightGrey};
-  box-shadow: 0 1px 10px ${colors.lightGrey};
+  box-shadow: 0 1px 10px ${colors.black};
   ` : `
 `};
 `
 
-export {
-  MovieContainer,
-  MovieContent
-}
+export const MovieDescription = styled.div`
+  p {
+    font-size: 14px;
+    line-height: 160%;
+  }
+  h2 {
+    font-size: 14px;
+  }
+`
