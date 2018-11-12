@@ -29,21 +29,39 @@ class MovieDetail extends PureComponent {
   }
 
   render () {
-    const data = this.props.details
-    const adult = data.adult
-    const title = data.title
+    console.log(this.props.details)
+    const data = this.props.details || undefined
+    const adult = data.adult || undefined
+    const title = data.title || undefined
     const budget = data.budget <= 0 ? <FaQuestion /> : accounting.formatMoney(data.budget, { precision: 0 })
-    const genres = data.genres
-    const poster = data.poster_path
-    const description = data.overview
-    const rateCount = data.vote_count
-    const rating = data.vote_average
-    const imdb = data.imdb_id
-    const id = data.id
+    const genres = data.genres || undefined
+    const poster = data.poster_path || undefined
+    const description = data.overview || undefined
+    const rateCount = data.vote_count || undefined
+    const rating = data.vote_average || undefined
+    const imdb = data.imdb_id || undefined
+    const id = data.id || undefined
     const revenue = data.revenue <= 0 ? <FaQuestion /> : accounting.formatMoney(data.revenue, { precision: 0 })
-    const status = data.status
+    const status = data.status || undefined
     const postUrl = poster ? MDB.imageUrl + poster : ''
     const releaseDate = moment(data.release_date).isValid() ? moment(data.release_date).format('M/D/YY') : 'not valid date'
+
+    const tableData = {
+      adult,
+      title,
+      budget,
+      genres,
+      poster,
+      description,
+      rateCount,
+      rating,
+      imdb,
+      id,
+      revenue,
+      status,
+      postUrl,
+      releaseDate
+    }
 
     return (
       <MovieContainer poster={postUrl}>
@@ -82,6 +100,7 @@ class MovieDetail extends PureComponent {
                 name: 'Status'
               }
             ]}
+            body={tableData}
           />
 
           <Rating initialRating={rating} />

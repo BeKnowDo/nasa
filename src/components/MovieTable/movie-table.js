@@ -1,45 +1,67 @@
-import React from 'react'
+import React, { PureComponent } from 'react'
 import { IMDb } from 'simple-icons'
-import { FaCloudDownloadAlt } from 'react-icons/fa'
+import { FaCloudDownloadAlt, FaQuestion } from 'react-icons/fa'
 
 import { MovieTableSc, ImdbLink } from './styles'
 
-const MovieTable = props => {
-  console.log(props)
+class MovieTable extends PureComponent {
+  generateTableHeaders () {
+    const tableHeaders = this.props.headers || undefined
 
-  const releaseDate = ''
-  const imdb = ''
-  const budget = ''
-  const revenue = ''
-  const status = ''
-  const postUrl = ''
+    if (tableHeaders) {
+      return tableHeaders.map((header, index) => {
+        return (<th key={index}>{header.name}</th>)
+      })
+    }
+  }
 
-  return (
-    <MovieTableSc>
-      <thead>
-        <tr>
-          <th>Released</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>{releaseDate}</td>
-          <td>
-            <ImdbLink href={imdb} dangerouslySetInnerHTML={{__html: IMDb.svg}} />
-          </td>
-          <td>{budget}</td>
-          <td>
-            <a href={postUrl}>
-              <FaCloudDownloadAlt />
-            </a>
-          </td>
-          <td>{revenue}</td>
-          <td>{status}</td>
-        </tr>
-      </tbody>
+  generateTableBody () {
+    const tableBody = this.props.details
+    if (tableBody) {
+      return tableBody.map(body => {
+        return (<td>here</td>)
+      })
+    }
+  }
 
-    </MovieTableSc>
-  )
+  render () {
+    const movieData = this.props.body
+    const releaseDate = movieData.releaseDate
+    const imdb = movieData.imdb
+    const budget = movieData.budget
+    const revenue = movieData.revenue
+    const status = movieData.status
+    const postUrl = movieData.postUrl
+
+    return (
+      <MovieTableSc>
+        <thead>
+          <tr>
+            { this.generateTableHeaders() }
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>{releaseDate}</td>
+            <td>
+              { imdb ? <ImdbLink target='_blank' href={`//www.imdb.com/title/${imdb}`} dangerouslySetInnerHTML={{__html: IMDb.svg}} /> : <FaQuestion />}
+
+            </td>
+            <td>{budget}</td>
+            <td>
+              <a href={postUrl}>
+                <FaCloudDownloadAlt />
+              </a>
+            </td>
+            <td>{revenue}</td>
+            <td>{status}</td>
+          </tr>
+        </tbody>
+
+      </MovieTableSc>
+    )
+  }
 }
 
 export default MovieTable

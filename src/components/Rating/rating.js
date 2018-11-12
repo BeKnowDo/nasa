@@ -1,10 +1,10 @@
 import React from 'react'
 
 const Rating = props => {
-  console.log(props)
+  const rating = props.initialRating || 'unknown'
   return (
     <div>
-      Rating
+      Rating: {rating}
     </div>
   )
 }
