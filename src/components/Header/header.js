@@ -21,7 +21,7 @@ class Header extends Component {
     const { menuOpen } = this.state
 
     return (
-      <HeaderSc sticky>
+      <HeaderSc>
         <Navigation {...menuOpen} />
       </HeaderSc>
     )

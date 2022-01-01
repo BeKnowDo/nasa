@@ -8,7 +8,6 @@ const NavigationSc = styled.nav`
     margin: 0;
     padding: 0;
     list-style-type: none;
-
     display: flex;
     justify-content: center;
   }
@@ -34,6 +33,9 @@ const NavigationSc = styled.nav`
       &:before {
         transition: opacity .2s ease-in-out;
         opacity: 1;
+      }
+      a {
+        color: ${colors.jacksonsPurple};
       }
     }
 

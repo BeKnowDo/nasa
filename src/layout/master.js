@@ -28,7 +28,7 @@ const theme = {
 }
 
 const GridSc = styled(Grid)`
-  padding-top: 38px;
+  /* padding-top: 38px; */
 `
 
 const Master = props => ({

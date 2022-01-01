@@ -12,7 +12,9 @@ export const MovieTitle = styled.h2`
 export const MovieContainer = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   padding: 20px;
+  min-height: 800px;
 
   h1 {
     font-size: 24px;
@@ -48,6 +50,7 @@ export const MovieContent = styled.div`
   padding: 20px;
   background-color: ${colors.white};
   color: ${colors.black};
+  min-height: 400px;
 
   ${props => props.poster ? `
   opacity: .9;
