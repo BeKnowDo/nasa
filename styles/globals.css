@@ -1,0 +1,61 @@
+@font-face {
+  font-family: 'Manrope';
+  src: url('/fonts/Circular/CircularStd-Bold.otf');
+  font-style: bold;
+  font-weight: 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('/fonts/Circular/CircularStd-Medium.otf');
+  font-style: medium;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('/fonts/Circular/CircularStd-Light.otf');
+  font-style: light;
+  font-weight: 100;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('/fonts/Akkurat/FontsFree-Net-Akkurat-Bold.ttf');
+  font-style: bold;
+  font-weight: 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('/fonts/Akkurat/FontsFree-Net-Akkurat.ttf');
+  font-style: medium;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('/fonts/Akkurat/FontsFree-Net-Akkurat-Light.ttf');
+  font-style: light;
+  font-weight: 100;
+  font-display: swap;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: CircularStd, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: #f0f0f0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}

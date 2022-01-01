@@ -1,0 +1,97 @@
+{
+  "files.exclude": {
+    "**/.expo": true,
+    "**/.history/": true,
+    "**/.history/*": true,
+    "**/.next": true,
+    "**/.vscode_aaa": true,
+    "**/android": true,
+    "**/dist/*": true,
+    "**/docroot/core/modules/": true,
+    "**/ios/": true,
+    "**/node_modules": true,
+    "**/out": true,
+    "**/pattern_exports": true,
+    "**/pattern-lab": true,
+    "**/public_zzz": true,
+    "**/storage/clockwork/*": true,
+    "**/vendor": true
+  },
+  "git.enableSmartCommit": true,
+  "git.autofetch": true,
+  "html.format.indentInnerHtml": true,
+  "editor.suggestSelection": "first",
+  "diffEditor.renderIndicators": false,
+  "css.validate": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.tabSize": 2,
+  "editor.autoIndent": "keep",
+  "editor.insertSpaces": true,
+  "editor.formatOnPaste": false,
+  "editor.renderWhitespace": "boundary",
+  "editor.wordWrapColumn": 8000,
+  "editor.wordWrap": "off",
+  "editor.detectIndentation": false,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "html.format.wrapLineLength": 0,
+  "editor.glyphMargin": false,
+  "editor.overviewRulerBorder": false,
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "editor.fontSize": 12,
+  "html.format.endWithNewline": true,
+  "html.format.indentHandlebars": true,
+  "search.useIgnoreFiles": false,
+  "search.exclude": {
+    "**/.history/*": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.validate": [
+    "javascript"
+  ],
+  "[javascriptreact]": {
+    "editor.formatOnSave": false
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "gitlens.blame.ignoreWhitespace": true,
+  "workbench.startupEditor": "welcomePage",
+  "html.format.wrapAttributes": "preserve",
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "prettier.jsxSingleQuote": true,
+  "javascript.preferences.quoteStyle": "single",
+  "typescript.preferences.quoteStyle": "single",
+  "editor.minimap.maxColumn": 0,
+  "prettier.embeddedLanguageFormatting": "off",
+  "prettier.proseWrap": "never",
+  "prettier.useEditorConfig": false,
+  "window.zoomLevel": 2,
+  "javascript.format.enable": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "prettier.semi": false,
+  "remote.autoForwardPortsSource": "output",
+  "prettier.printWidth": 3000,
+  "prettier.singleQuote": true,
+  "editor.formatOnSave": true,
+  "emmet.triggerExpansionOnTab": true,
+  "window.title": "${activeFolderMedium}${separator}${rootName}",
+  "eslint.alwaysShowStatus": true,
+  "css.enabledLanguages": [
+    "html",
+    "js"
+  ],
+  "html-css-class-completion.enableEmmetSupport": true,
+  "autoimport.showNotifications": true,
+  "autoimport.filesToScan": "**/*.{js,jsx}",
+  "autoimport.useSemiColon": false
+}

@@ -1,7 +1,7 @@
+import { colors } from '@styles/design-tokens'
 import styled from 'styled-components'
-import { colors } from '../../styles/variables'
 
-const FooterSc = styled.footer`
+export const FooterSc = styled.footer`
   text-align: center;
   color: ${colors.black};
   width: 100%;
@@ -27,6 +27,4 @@ const FooterSc = styled.footer`
       text-decoration: underline;
     }
   }
-
 `
-export { FooterSc }
