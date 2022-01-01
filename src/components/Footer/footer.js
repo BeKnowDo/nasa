@@ -6,7 +6,11 @@ const Footer = () => {
   return (
     <FooterSc>
       <img src={logo} alt="BKD's logo" />
-      <h3>BKD Digital, Inc. - Veteran owned and Operated</h3>
+      <h3>
+        <a target='_blank' rel="noopener noreferrer" href='//lumiqualis.com' title='LumiQualis website'>
+          LumiQualis, LLC
+        </a>
+      </h3>
     </FooterSc>
   )
 }
