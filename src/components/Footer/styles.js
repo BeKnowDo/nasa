@@ -15,8 +15,17 @@ const FooterSc = styled.footer`
 
   img {
     display: block;
-    margin: 0 auto;
-    max-width: 80px;
+    margin: 20px auto 0;
+    max-width: 200px;
+  }
+
+  a {
+    text-decoration: none;
+    font-size: 18px;
+    color: ${colors.jacksonsPurple};
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
 `

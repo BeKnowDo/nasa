@@ -5,6 +5,7 @@ const colors = {
   red: '#FF3300',
   green: '#C3FF68',
   blue: '#02779E',
+  jacksonsPurple: '#23379F',
   lightGrey: '#999',
   blueMint: '#D4F3E9',
   transparentGrey: 'rgba(0,0,0,1)',
@@ -12,9 +13,9 @@ const colors = {
 }
 
 const backgrounds = {
-  header: `background-color: ${colors.transparentGrey}; color: ${colors.white};`,
+  header: `background-color: ${colors.jacksonsPurple}; color: ${colors.white};`,
   navigation: {
-    items: `background-color: ${colors.transparentDarkGrey}; color: ${colors.white};`
+    items: `background-color: ${colors.white}; color: ${colors.jacksonsPurple};`
   },
   blackOpacity: `background-color: ${colors.transparentDarkGrey};`
 }

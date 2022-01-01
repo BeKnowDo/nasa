@@ -5,7 +5,7 @@ import logo from '../../images/logo.png'
 const Footer = () => {
   return (
     <FooterSc>
-      <img src={logo} alt="BKD's logo" />
+      <img src={logo} alt="LUMI's logo" />
       <h3>
         <a target='_blank' rel="noopener noreferrer" href='//lumiqualis.com' title='LumiQualis website'>
           LumiQualis, LLC
