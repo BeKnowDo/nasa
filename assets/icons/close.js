@@ -1,5 +1,5 @@
 import { colors } from '@styles/design-tokens'
-
+import React from 'react'
 export const CloseIcon = ({ fillColor, size }) => {
   return (
     <svg

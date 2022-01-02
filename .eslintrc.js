@@ -31,7 +31,7 @@ module.exports = {
     it: 'readonly',
   },
   rules: {
-    'linebreak-style': 0,
+    'prettier/prettier': ['error', { endOfLine: 'auto' }],
     '@next/next/no-img-element': 'off',
     'import/no-unresolved': 'off',
     'import/named': 'warn',

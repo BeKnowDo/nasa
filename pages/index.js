@@ -1,6 +1,5 @@
 import navigationItems from '@data/navigation.json'
 import { Layout } from '@layouts/Global'
-import { wrapper } from '@redux/store'
 import { colors } from '@styles/design-tokens'
 import React from 'react'
 import { createGlobalStyle } from 'styled-components'
@@ -49,4 +48,4 @@ MyApp.getInitialProps = async (ctx) => {
   return { navigationItems: navigationItems }
 }
 
-export default wrapper.withRedux(MyApp)
+export default MyApp

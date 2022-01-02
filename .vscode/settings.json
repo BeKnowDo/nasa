@@ -93,5 +93,6 @@
   "html-css-class-completion.enableEmmetSupport": true,
   "autoimport.showNotifications": true,
   "autoimport.filesToScan": "**/*.{js,jsx}",
-  "autoimport.useSemiColon": false
+  "autoimport.useSemiColon": false,
+  "files.eol": "\n",
 }

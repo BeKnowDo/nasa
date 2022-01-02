@@ -1,4 +1,5 @@
 import { colors } from '@styles/design-tokens'
+import React from 'react'
 
 export const ChevronDownIcon = ({ fillColor, size }) => {
   return (

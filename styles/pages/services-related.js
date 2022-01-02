@@ -1,9 +1,7 @@
-import styled from 'styled-components'
-
 import { CardSC } from '@components/Base/styles'
 import { HeroSectionWrapper } from '@components/HeroSection/HeroSectionWrapper'
-
 import { colors, sizes } from '@styles/design-tokens'
+import styled from 'styled-components'
 
 export const AreaExpertiseSC = styled.section`
   width: 100%;
