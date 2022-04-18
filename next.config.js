@@ -1,6 +1,10 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+module.exports = {
   reactStrictMode: true,
+  webpack5: true,
+  eslint: {
+    dirs: ['components', 'layouts', 'lib', 'pages', 'redux'],
+  },
+  env: {
+    defaultTheme: 'theme',
+  },
 }
-
-module.exports = nextConfig

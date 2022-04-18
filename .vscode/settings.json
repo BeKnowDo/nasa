@@ -1,0 +1,84 @@
+{
+  "files.exclude": {
+    "**/.expo": true,
+    "**/.history/": true,
+    "**/.history/*": true,
+    "**/.next": true,
+    "**/.vscode": true,
+    "**/android": true,
+    "**/dist/*": true,
+    "**/docroot/core/modules/": true,
+    "**/ios/": true,
+    "**/node_modules": true,
+    "**/out": true,
+    "**/pattern_exports": true,
+    "**/pattern-lab": true,
+    "**/public_zzz": true,
+    "**/storage/clockwork/*": true,
+    "**/vendor": true
+  },
+  "git.autofetch": true,
+  "html.format.indentInnerHtml": true,
+  "editor.suggestSelection": "first",
+  "diffEditor.renderIndicators": false,
+  "css.validate": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.tabSize": 2,
+  "editor.autoIndent": "keep",
+  "editor.formatOnPaste": false,
+  "editor.renderWhitespace": "boundary",
+  "editor.wordWrapColumn": 8000,
+  "editor.wordWrap": "off",
+  "editor.detectIndentation": false,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "html.format.wrapLineLength": 0,
+  "editor.glyphMargin": false,
+  "editor.overviewRulerBorder": false,
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "html.format.endWithNewline": true,
+  "html.format.indentHandlebars": true,
+  "search.useIgnoreFiles": false,
+  "search.exclude": {
+    "**/.history/*": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "[javascriptreact]": {
+    "editor.formatOnSave": false
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "gitlens.blame.ignoreWhitespace": true,
+  "html.format.wrapAttributes": "preserve",
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "prettier.useEditorConfig": false,
+  "javascript.format.enable": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "remote.autoForwardPortsSource": "output",
+  "prettier.printWidth": 80,
+  "editor.formatOnSave": true,
+  "emmet.triggerExpansionOnTab": true,
+  "window.title": "${activeFolderMedium}${separator}${rootName}",
+  "eslint.alwaysShowStatus": true,
+  "css.enabledLanguages": [
+    "html",
+    "js"
+  ],
+  "html-css-class-completion.enableEmmetSupport": true,
+  "autoimport.showNotifications": true,
+  "autoimport.filesToScan": "**/*.{js,jsx}",
+  "autoimport.useSemiColon": false,
+  "compile-hero.disable-compile-files-on-did-save-code": true,
+  "editor.tabCompletion": "off",
+  "editor.minimap.enabled": false
+}
