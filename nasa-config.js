@@ -10,4 +10,5 @@ export const MDB = {
   cast: `case`,
 }
 
+export const getMovies = `https://api.themoviedb.org/4/search/movie?api_key=${movieKey}&language=en-US&query=NASA&include_adult=false`
 export const pictureOfTheDay = `https://api.nasa.gov/planetary/apod?api_key=${nasaApiKey}`
