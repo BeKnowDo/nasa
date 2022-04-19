@@ -1,14 +1,20 @@
 import styled from '@emotion/styled'
 import { colors } from '@styles/design-tokens'
 
-export const PictureOfTheDaySC = styled.img`
+export const PictureOfTheDayContainer = styled.div`
+  position: relative;
+`
+export const PictureOfTheDayImageSC = styled.img`
   display: block;
 `
 
 export const PictureOfTheDayTitle = styled.h1`
-  padding: 20px;
+  text-align: center;
+  width: calc(100% - 40px);
+
+  padding: 10px 20px 10px;
   color: ${colors.cornflower};
-  font-size: 24px;
+  font-size: 20px;
 
   span {
     color: ${colors.selectiveYellow};
