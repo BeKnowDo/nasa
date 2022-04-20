@@ -8,12 +8,35 @@ export const ContentWrapper = styled.div`
 `
 
 export const MovieListContainer = styled.div`
-  display: flex;
+  ${
+    '' /* display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   overflow: hidden;
-  overflow-x: auto;
-  width: calc(100vw - 40px);
-  padding: 0 20px;
+  width: calc(100% - 40px); */
+  }
+  padding: 20px;
+  display: grid;
+
+  @media(min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media(min-width: 1024px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  @media(min-width: 1200px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  @media(min-width: 1500px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+
+  @media(min-width: 1600px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
 `
 
 export const MovieListRow = styled.div`

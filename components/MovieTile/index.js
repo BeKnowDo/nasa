@@ -1,4 +1,5 @@
 import { MDB } from 'nasa-config'
+import Link from 'next/link'
 import React from 'react'
 import {
   MovieDescriptionTitle,
@@ -18,26 +19,33 @@ export const MovieTile = ({
   poster_path = null,
   release_date = null,
   title = null,
+  id,
 }) => {
   return (
     <MovieTileContainer>
-      {poster_path !== null && poster_path !== '' && (
-        <MovieImageBackground background={`${MDB.imageUrl}/${poster_path}`} />
-      )}
+      <Link href={`/movies/${id}`} passHref>
+        <a>
+          {poster_path !== null && poster_path !== '' && (
+            <MovieImageBackground
+              background={`${MDB.imageUrl}/${poster_path}`}
+            />
+          )}
 
-      {(poster_path === null || poster_path === '') && (
-        <MovieImageBackground background='/image/gallery.png' />
-      )}
+          {(poster_path === null || poster_path === '') && (
+            <MovieImageBackground background='/image/gallery.png' />
+          )}
 
-      <MovieTitle>{original_title}</MovieTitle>
-      <MovieDescriptionTitle>Description:</MovieDescriptionTitle>
-      <MovieOverview>{overview}</MovieOverview>
-      <MoviePopularity>
-        Popularity: <em>{popularity}</em>
-      </MoviePopularity>
-      <MovieReleaseDate>
-        Release Date: <em>{release_date}</em>
-      </MovieReleaseDate>
+          <MovieTitle>{original_title}</MovieTitle>
+          <MovieDescriptionTitle>Description:</MovieDescriptionTitle>
+          <MovieOverview>{overview}</MovieOverview>
+          <MoviePopularity>
+            Popularity: <em>{popularity}</em>
+          </MoviePopularity>
+          <MovieReleaseDate>
+            Release Date: <em>{release_date}</em>
+          </MovieReleaseDate>
+        </a>
+      </Link>
     </MovieTileContainer>
   )
 }

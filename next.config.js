@@ -7,4 +7,10 @@ module.exports = {
   env: {
     defaultTheme: 'theme',
   },
+  images: {
+    domains: ['image.tmdb.org'],
+  },
+  experimental: {
+    images: { layoutRaw: true },
+  },
 }

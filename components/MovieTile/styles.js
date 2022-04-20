@@ -2,14 +2,75 @@ import styled from '@emotion/styled'
 import { colors } from '@styles/design-tokens'
 
 export const MovieTileContainer = styled.div`
-  color: ${colors.white};
+  background-color: ${colors.white};
+  color: ${colors.black};
   padding: 20px;
   border: 1px solid ${colors.white};
   border-radius: 4px;
-  flex-grow: 0;
-  flex-shrink: 0;
-  flex-basis: 300px;
-  margin: 20px 20px 0 0;
+  flex-basis: 100%;
+  margin: 20px 0 0 0;
+
+  a {
+    text-decoration: none;
+    color: ${colors.black};
+
+    &:hover {
+      text-decoration: underline;
+      text-decoration-color: ${colors.selectiveYellow};
+    }
+  }
+
+
+  @media(min-width: 768px) {
+    margin: 0 20px 20px 0;
+
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    &:nth-child(2n) {
+      margin-right: 20px;
+    }
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    &:nth-child(2n) {
+      margin-right: 20px;
+    }
+
+    &:nth-child(3n) {
+      margin-right: 20px;
+    }
+
+    &:nth-child(4n) {
+      ${'' /* margin-right: 0; */}
+    }
+  }
+
+  @media(min-width: 1200px) {
+    &:nth-child(2n) {
+      margin-right: 20px;
+    }
+
+    &:nth-child(3n) {
+      margin-right: 20px;
+    }
+
+    &:nth-child(4n) {
+      margin-right: 20px;
+    }
+
+    &:nth-child(5n) {
+      ${'' /* margin-right: 0; */}
+    }
+  }
+
+
 `
 
 export const MovieImageBackground = styled.div`
@@ -32,6 +93,11 @@ export const MovieTitle = styled.h1`
   margin: 0 0 20px;
   text-align: center;
   color: ${colors.selectiveYellow};
+
+  @media(min-width: 1024px) {
+    font-size: 22px;
+  }
+
 `
 
 export const MovieDescriptionTitle = styled.h4`
